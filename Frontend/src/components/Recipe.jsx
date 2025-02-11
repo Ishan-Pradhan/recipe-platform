@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import VeganStamp from "./VeganStamp";
 import { Link } from "react-router-dom";
 import { scrollToTop } from "../utils/scrollToTop";
+import SkeletonLoader from "./SkeletonLoader";
 
 const Recipe = ({ recipe }) => {
   const [loading, setLoading] = useState(true);
