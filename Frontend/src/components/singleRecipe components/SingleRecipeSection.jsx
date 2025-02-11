@@ -46,6 +46,7 @@ const SingleRecipeSection = ({ recipe }) => {
   };
 
   const handleCommentSubmit = async (e) => {
+    e.preventDefault();
     if (!newComment.trim()) return;
 
     try {
