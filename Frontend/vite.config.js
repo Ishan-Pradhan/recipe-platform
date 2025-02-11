@@ -5,7 +5,7 @@ import tailwindcss from "tailwindcss";
 export default defineConfig({
   server: {
     proxy: {
-      "/api": "https://recipe-platform-api.vercel.app/",
+      "/api": "https://recipe-platform-api.vercel.app",
     },
   },
   plugins: [react()],
