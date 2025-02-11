@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Recipe from "../Recipe";
 import axios from "axios";
+import { URL } from "../../constants/constants";
 
 const RecipesSection = () => {
   const [recipes, setRecipes] = useState([]);
