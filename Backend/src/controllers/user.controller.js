@@ -5,7 +5,6 @@ import jwt from "jsonwebtoken";
 import OTP from "../models/otp.model.js";
 import { generateOtp } from "../utils/otpGenerator.js";
 import sendEmail from "../utils/sendEmail.js";
-import { ApiError } from "../utils/ApiError.js";
 
 const generateAccessAndRefreshTokens = async (userId) => {
   try {
@@ -18,10 +17,9 @@ const generateAccessAndRefreshTokens = async (userId) => {
 
     return { accessToken, refreshToken };
   } catch (error) {
-    throw new ApiError(
-      500,
-      "Something went wrong while generating refresh and access tokens"
-    );
+    res.status(500).send({
+      message: "Something went wrong while generating refresh and access token",
+    });
   }
 };
 
@@ -31,7 +29,7 @@ const registerUser = asyncHandler(async (req, res) => {
   console.log(username, email, password);
 
   if ([username, email, password].some((field) => field.trim() === "")) {
-    throw new ApiError(400, "All fields are required");
+    res.status(400).send({ message: "All fields are required" });
   }
 
   const existedUser = await User.findOne({
@@ -39,7 +37,7 @@ const registerUser = asyncHandler(async (req, res) => {
   });
 
   if (existedUser) {
-    throw new ApiError(409, "This email is already registered");
+    res.status(409).send({ message: "This email is already registered" });
   }
 
   const user = await User.create({ username, email, password });
@@ -60,7 +58,7 @@ const registerUser = asyncHandler(async (req, res) => {
   );
 
   if (!createdUser) {
-    throw new ApiError(400, "Something went wrong while registering");
+    res.status(400).send({ message: "Something went wrong while registering" });
   }
 
   return res.send(
@@ -138,7 +136,7 @@ const verifyOtpForPassword = asyncHandler(async (req, res) => {
   });
 
   if (!otpRecord || otpRecord.expireAt < new Date()) {
-    throw new ApiError(400, "Invalid or expired OTP");
+    res.status(400).send({ message: "Invalid or expired OTP" });
   }
 
   await OTP.deleteOne({ email, purpose: "password-reset" });
@@ -186,7 +184,7 @@ const requestOtp = asyncHandler(async (req, res) => {
   const user = await User.findOne({ email });
 
   if (!user) {
-    throw new ApiError(404, "User not found");
+    res.status(400).send({ message: "User not found" });
   }
 
   const otp = generateOtp();
@@ -215,45 +213,31 @@ const refreshAccessToken = async (req, res, next) => {
     const { refreshToken: incomingRefreshToken } = req.body;
 
     if (!incomingRefreshToken) {
-      throw new ApiError(400, "Refresh token is required");
+      res.status(400).send({ message: "Refresh token is required" });
     }
 
     // Step 1: Find the user associated with the refresh token
     const user = await User.findOne({ refreshTokens: incomingRefreshToken });
 
     if (!user) {
-      throw new ApiError(400, "Invalid refresh token");
+      res.status(400).send({ message: "Invalid refresh token" });
+
+      // Step 2: Check if the incoming refresh token is still valid
+      const isValid = user.refreshTokens.includes(incomingRefreshToken);
+
+      if (!isValid) {
+        res.status(400).send({ message: "Expired or Invalid refresh token" });
+      }
+
+      // Step 3: Generate a new access token (keep the same refresh token)
+      const accessToken = user.generateAccessToken(); // Using the method to generate the access token
+
+      // Step 5: Return the new access token with the existing refresh token
+      return res.json({
+        accessToken, // New access token
+        refreshToken: incomingRefreshToken, // Keep the same refresh token
+      });
     }
-
-    // Step 2: Check if the incoming refresh token is still valid
-    const isValid = user.refreshTokens.includes(incomingRefreshToken);
-
-    if (!isValid) {
-      throw new ApiError(400, "Expired or invalid refresh token");
-    }
-
-    // Step 3: Generate a new access token (keep the same refresh token)
-    const accessToken = user.generateAccessToken(); // Using the method to generate the access token
-
-    // Step 4: Optionally, update the refresh token if needed (e.g., for rotation or expiry)
-    // If you want to refresh the refresh token, uncomment the following lines
-    /*
-    const { accessToken: newAccessToken, refreshToken: newRefreshToken } = await generateAccessAndRefreshTokens(user._id);
-
-    // Save the new refresh token
-    user.refreshTokens.push(newRefreshToken);
-    await user.save();
-    return res.json({
-      accessToken: newAccessToken,
-      refreshToken: newRefreshToken,
-    });
-    */
-
-    // Step 5: Return the new access token with the existing refresh token
-    return res.json({
-      accessToken, // New access token
-      refreshToken: incomingRefreshToken, // Keep the same refresh token
-    });
   } catch (error) {
     next(error);
   }
@@ -311,7 +295,7 @@ const changePassword = asyncHandler(async (req, res) => {
   const user = await User.findOne({ email });
 
   if (!user) {
-    throw new ApiError(404, "User not found");
+    res.status(404).send({ message: "User not found" });
   }
 
   user.password = password;
