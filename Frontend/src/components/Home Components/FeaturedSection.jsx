@@ -27,6 +27,7 @@ const FeaturedSection = () => {
       try {
         const res = await axios.get("/api/v1/recipes/allrecipes");
         setRecipes(res.data);
+        console.log(res.data);
       } catch (error) {
         console.error("Failed to fetch recipes", error);
       }
