@@ -56,13 +56,7 @@ const Recipes = () => {
   return (
     <>
       <Header />
-      {loading && (
-        <div className="flex gap-40 my-20">
-          <SkeletonLoader />
-          <SkeletonLoader />
-          <SkeletonLoader />
-        </div>
-      )}
+
       <section className="container mb-10 mx-auto p-4">
         <div className="text-center mb-8">
           <h3 className="text-2xl font-bold uppercase">Our Recipes</h3>
@@ -94,7 +88,11 @@ const Recipes = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredRecipes.map((recipe) =>
             loading ? (
-              <SkeletonLoader />
+              <div className="flex gap-40 my-20">
+                <SkeletonLoader />
+                <SkeletonLoader />
+                <SkeletonLoader />
+              </div>
             ) : (
               <Recipe key={recipe._id} recipe={recipe} />
             )
