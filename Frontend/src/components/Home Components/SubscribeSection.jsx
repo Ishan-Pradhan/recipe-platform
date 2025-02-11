@@ -7,7 +7,7 @@ const SubscribeSection = () => {
       className="container mx-auto mb-10 "
       data-aos="fade-up"
       data-aos-anchor-placement="top-bottom"
-      data-aos-delay="200"
+      data-aos-delay="100"
     >
       <div className="relative overflow-hidden  rounded-[24px] mx-4   flex flex-col gap-[48px] p-4 md:p-16 bg-primaryRed md:justify-center md:items-center">
         <div className="bg-[#FF6653] opacity-40 absolute top-[-10%] left-[-10%] h-[200px] w-[400px] md:h-[500px] md:w-full rounded-[50%] md:left-0 md:-top-80"></div>
