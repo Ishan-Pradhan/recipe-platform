@@ -303,7 +303,7 @@ const getAllRecipes = async (req, res) => {
     res.status(200).send(recipes);
   } catch (error) {
     console.error("Error fetching products:", error);
-    res.status(500).send({ message: "Internal Server Error" }, error);
+    res.status(500).send({ message: error }, error);
   }
 };
 
