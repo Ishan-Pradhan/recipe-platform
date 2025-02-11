@@ -1,6 +1,5 @@
 import { asyncHandler } from "../utils/asyncHandler.js";
 import jwt from "jsonwebtoken";
-import { ApiError } from "../utils/ApiError.js";
 import { User } from "./../models/user.model.js";
 
 export const verifyJWT = asyncHandler(async (req, res, next) => {
@@ -39,7 +38,7 @@ export const isAdmin = async (req, res, next) => {
     const user = await User.findById(req.user._id);
     console.log(user);
     if (user.role !== "admin") {
-      throw new ApiError(401, "unauthorized access");
+      res.status(200).send({ message: "unauthorized access" });
     } else {
       next();
     }
