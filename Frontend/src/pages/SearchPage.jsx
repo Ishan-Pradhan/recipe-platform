@@ -39,6 +39,11 @@ const SearchPage = () => {
           <h1 className=" font-[800] text-[24px] uppercase">
             Search Results: {name}
           </h1>
+          {searchResults.length === 0 && (
+            <div className="h-20 flex justify-center items-center">
+              <h2 className="text-dark">No result found.</h2>
+            </div>
+          )}
           <div className="grid md:grid-cols-3 gap-8">
             {searchResults.map((recipe) => (
               <Recipe recipe={recipe} key={recipe._id} />

@@ -95,6 +95,7 @@ const SingleRecipeSection = ({ recipe }) => {
       console.error("Failed to delete comment", error);
     }
   };
+
   const handleAdminDeleteComment = async (commentId) => {
     try {
       await api.delete(`/recipes/admin/comment/${recipe._id}/${commentId}`);
