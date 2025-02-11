@@ -3,13 +3,14 @@ import Header from "../../components/Header";
 import AdminRecipes from "../../components/admin/AdminRecipes";
 import axios from "axios";
 import Footer from "../../components/Footer";
+import { URL } from "../../constants/constants";
 
 const ManageRecipe = () => {
   const [recipes, setRecipes] = useState([]);
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
-        const res = await axios.get("/api/v1/recipes/allrecipes");
+        const res = await axios.get(`${URL}/api/v1/recipes/allrecipes`);
         console.log(res.data);
         setRecipes(res.data);
       } catch (error) {

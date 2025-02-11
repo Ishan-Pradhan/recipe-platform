@@ -6,6 +6,7 @@ import FeaturedSection from "./../components/Home Components/FeaturedSection";
 import SubscribeSection from "../components/Home Components/SubscribeSection";
 import Footer from "../components/Footer";
 import axios from "axios";
+import { URL } from "../constants/constants";
 const SingleRecipe = () => {
   const { id } = useParams();
   const [recipe, setRecipe] = useState(null);
@@ -13,7 +14,7 @@ const SingleRecipe = () => {
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
-        const res = await axios.get(`/api/v1/recipes/recipe/${id}`);
+        const res = await axios.get(`${URL}/api/v1/recipes/recipe/${id}`);
         setRecipe(res.data);
       } catch (error) {
         console.error("Failed to fetch recipes", error);

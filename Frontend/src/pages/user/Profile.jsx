@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { updateUserSuccess } from "../../redux/user/userSlice";
+import { URL } from "../../constants/constants";
 
 const Profile = () => {
   const [username, setUsername] = useState("");
@@ -28,7 +29,7 @@ const Profile = () => {
     console.log(username);
     try {
       const res = await axios.put(
-        "/api/v1/users/update-detail",
+        `${URL}/api/v1/users/update-detail`,
         { username },
         {
           headers: {

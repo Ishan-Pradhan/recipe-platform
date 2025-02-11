@@ -5,6 +5,7 @@ import Product from "../components/Home Components/Product";
 import products from "../data/featured.json";
 import Recipe from "../components/Recipe";
 import axios from "axios";
+import { URL } from "../constants/constants";
 
 const Recipes = () => {
   const [recipes, setRecipes] = useState([]);
@@ -24,7 +25,7 @@ const Recipes = () => {
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
-        const res = await axios.get("/api/v1/recipes/allrecipes");
+        const res = await axios.get(`${URL}/api/v1/recipes/allrecipes`);
         setRecipes(res.data);
         setFilteredRecipes(res.data);
       } catch (error) {

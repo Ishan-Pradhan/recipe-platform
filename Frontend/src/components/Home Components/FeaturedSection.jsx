@@ -5,6 +5,7 @@ import Recipe from "../Recipe";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import axios from "axios";
+import { URL } from "../../constants/constants";
 
 const FeaturedSection = () => {
   const splideRef = useRef(null);
@@ -25,7 +26,7 @@ const FeaturedSection = () => {
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
-        const res = await axios.get("/api/v1/recipes/allrecipes");
+        const res = await axios.get(`${URL}/api/v1/recipes/allrecipes`);
         console.log("api response :", res.data);
         setRecipes(res.data);
       } catch (error) {

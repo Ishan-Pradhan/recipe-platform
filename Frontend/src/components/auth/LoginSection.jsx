@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { URL } from "../../constants/constants";
 
 const LoginSection = () => {
   const [formData, setFormData] = useState({});
@@ -30,7 +31,7 @@ const LoginSection = () => {
     try {
       dispatch(signInStart());
 
-      const res = await axios.post("/api/v1/users/login", formData, {
+      const res = await axios.post(`${URL}/api/v1/users/login`, formData, {
         headers: {
           "Content-Type": "application/json",
         },

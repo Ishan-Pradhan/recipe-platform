@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import axios from "axios";
 import Recipe from "../components/Recipe";
+import { URL } from "../constants/constants";
 
 const SearchPage = () => {
   const location = useLocation();
@@ -15,7 +16,7 @@ const SearchPage = () => {
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
-        const res = await axios.get("/api/v1/recipes/allrecipes");
+        const res = await axios.get(`${URL}/api/v1/recipes/allrecipes`);
         const filteredResults = res.data.filter((recipe) =>
           recipe.name.toLowerCase().includes(name.toLowerCase())
         );

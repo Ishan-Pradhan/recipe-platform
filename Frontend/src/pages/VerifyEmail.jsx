@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { URL } from "../constants/constants";
 
 const VerifyEmail = () => {
   const { email } = useParams();
@@ -21,7 +22,7 @@ const VerifyEmail = () => {
 
     try {
       const res = await axios.post(
-        "/api/v1/users/verify-email",
+        `${URL}/api/v1/users/verify-email`,
         { email, otp },
         {
           headers: {

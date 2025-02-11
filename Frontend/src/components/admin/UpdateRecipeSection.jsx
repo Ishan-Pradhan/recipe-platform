@@ -8,6 +8,7 @@ import Quill from "quill";
 import { useParams } from "react-router-dom";
 import Header from "../Header";
 import Footer from "../Footer";
+import { URL } from "../../constants/constants";
 
 const UpdateRecipeSection = () => {
   const FontAttributor = Quill.import("attributors/class/font");
@@ -103,7 +104,7 @@ const UpdateRecipeSection = () => {
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
-        const res = await axios.get(`/api/v1/recipes/recipe/${id}`);
+        const res = await axios.get(`${URL}/api/v1/recipes/recipe/${id}`);
         const recipes = res.data;
 
         if (recipes) {

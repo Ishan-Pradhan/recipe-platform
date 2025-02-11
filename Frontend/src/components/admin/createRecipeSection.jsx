@@ -5,6 +5,7 @@ import "react-quill/dist/quill.snow.css";
 import axios from "axios";
 import { toast } from "react-toastify";
 import Quill from "quill";
+import { URL } from "../../constants/constants";
 
 const FontAttributor = Quill.import("attributors/class/font");
 FontAttributor.whitelist = ["roboto", "Montserrat"];
@@ -184,11 +185,15 @@ const CreateRecipeSection = () => {
     }
 
     try {
-      const res = await axios.post("/api/v1/recipes/createrecipe", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const res = await axios.post(
+        `${URL}/api/v1/recipes/createrecipe`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
       toast.success("Recipe created successfully");
       setIsLoading(false);
     } catch (error) {

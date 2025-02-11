@@ -3,6 +3,7 @@ import { method } from "lodash";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { URL } from "../../constants/constants";
 
 const RegisterSection = () => {
   const [formData, setFormData] = useState({});
@@ -17,7 +18,7 @@ const RegisterSection = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      const res = await axios.post("/api/v1/users/register", formData, {
+      const res = await axios.post(`${URL}/api/v1/users/register`, formData, {
         headers: {
           "Content-Type": "application/json",
         },

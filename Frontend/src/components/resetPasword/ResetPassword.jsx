@@ -4,6 +4,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import Header from "../Header";
 import Footer from "../Footer";
+import { URL } from "../../constants/constants";
 
 const ResetPassword = () => {
   const location = useLocation();
@@ -33,7 +34,7 @@ const ResetPassword = () => {
 
     try {
       const res = await axios.post(
-        "/api/v1/users/change-password",
+        `${URL}/api/v1/users/change-password`,
         { email, password },
         {
           headers: {

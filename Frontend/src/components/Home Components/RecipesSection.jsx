@@ -21,7 +21,7 @@ const RecipesSection = () => {
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
-        const res = await axios.get("/api/v1/recipes/allrecipes");
+        const res = await axios.get(`${URL}/api/v1/recipes/allrecipes`);
         setRecipes(res.data);
         setFilteredRecipes(res.data);
       } catch (error) {

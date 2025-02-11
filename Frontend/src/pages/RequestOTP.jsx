@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { URL } from "../constants/constants";
 
 const RequestOtp = () => {
   const [email, setEmail] = useState("");
@@ -25,7 +26,7 @@ const RequestOtp = () => {
 
     try {
       const res = await axios.post(
-        "/api/v1/users/request-otp",
+        `${URL}/api/v1/users/request-otp`,
         { email },
         {
           headers: {
