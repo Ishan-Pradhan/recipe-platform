@@ -88,11 +88,7 @@ const Recipes = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredRecipes.map((recipe) =>
             loading ? (
-              <div className="flex gap-40 my-20">
-                <SkeletonLoader />
-                <SkeletonLoader />
-                <SkeletonLoader />
-              </div>
+              <SkeletonLoader />
             ) : (
               <Recipe key={recipe._id} recipe={recipe} />
             )
