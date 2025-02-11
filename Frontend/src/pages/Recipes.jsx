@@ -53,9 +53,15 @@ const Recipes = () => {
     setFilter(category);
   };
 
-  // if (loading) {
-  //   return <SkeletonLoader />;
-  // }
+  if (loading) {
+    return (
+      <div className="flex gap-40">
+        <SkeletonLoader />
+        <SkeletonLoader />
+        <SkeletonLoader />
+      </div>
+    );
+  }
 
   return (
     <>
