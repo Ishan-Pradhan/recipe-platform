@@ -2,6 +2,7 @@ import axios from "axios";
 import { store } from "../redux/store";
 import { updateAccessToken, logout } from "../redux/user/userSlice";
 import { URL } from "../constants/constants";
+import { URL } from "./../constants/constants";
 
 const api = axios.create({
   baseURL: `${URL}/api/v1`,
@@ -42,7 +43,7 @@ api.interceptors.response.use(
         }
 
         // Send refresh token request to backend
-        const { data } = await axios.post("/api/v1/users/refreshToken", {
+        const { data } = await axios.post(`${URL}/api/v1/users/refreshToken`, {
           refreshToken,
         });
 
