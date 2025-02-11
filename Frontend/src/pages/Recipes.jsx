@@ -53,9 +53,9 @@ const Recipes = () => {
     setFilter(category);
   };
 
-  if (loading) {
-    return <SkeletonLoader />;
-  }
+  // if (loading) {
+  //   return <SkeletonLoader />;
+  // }
 
   return (
     <>
@@ -89,9 +89,13 @@ const Recipes = () => {
           </h2>
         )} */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredRecipes.map((recipe) => (
-            <Recipe key={recipe._id} recipe={recipe} />
-          ))}
+          {filteredRecipes.map((recipe) =>
+            loading ? (
+              <SkeletonLoader />
+            ) : (
+              <Recipe key={recipe._id} recipe={recipe} />
+            )
+          )}
         </div>
       </section>
       <Footer />
