@@ -53,19 +53,16 @@ const Recipes = () => {
     setFilter(category);
   };
 
-  if (loading) {
-    return (
-      <div className="flex gap-40">
-        <SkeletonLoader />
-        <SkeletonLoader />
-        <SkeletonLoader />
-      </div>
-    );
-  }
-
   return (
     <>
       <Header />
+      {loading && (
+        <div className="flex gap-40">
+          <SkeletonLoader />
+          <SkeletonLoader />
+          <SkeletonLoader />
+        </div>
+      )}
       <section className="container mb-10 mx-auto p-4">
         <div className="text-center mb-8">
           <h3 className="text-2xl font-bold uppercase">Our Recipes</h3>
