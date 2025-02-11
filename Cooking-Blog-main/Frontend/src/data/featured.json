@@ -1,0 +1,212 @@
+[
+  {
+    "id": 1,
+    "name": "Savory Herb-Infused Chicken",
+    "image": "/images/featured1.png",
+    "smallIntro": "Today, we're diving into a recipe that's sure to become a family favorite - our Lemon Garlic Roasted Chicken. The perfect harmony of citrusy zest and savory garlic makes this roast a true delight for the taste buds.",
+    "intro": "Picture succulent chicken infused with the bright notes of lemon and the aromatic richness of garlic. It's a symphony of flavors that will have your taste buds dancing. Join us as we delve into the art of roasting and uncover the secrets behind creating a masterpiece that's not just a meal but a celebration of culinary craftsmanship. As you preheat your oven, envision the kitchen filling with the tantalizing aroma of herbs and citrus, setting the stage for a delightful meal that transcends the ordinary. The anticipation builds as the chicken roasts to golden perfection, promising a dining experience that marries simplicity with sophistication. Whether you're a seasoned chef or a kitchen novice, this recipe invites you to become a culinary artist, creating a masterpiece that will leave a lasting impression on your guests and loved ones.",
+    "description": "Indulge in the rich and savory symphony of flavors with our Savory Herb-Infused fried crunchy Chicken",
+    "prepInfo": "40 min - easy prep - 3 serves",
+    "prepTime": "40 min",
+    "prepLevel": "easy",
+    "serves": "3",
+    "vegan": false,
+    "ingredients": [
+      "1 whole chicken (about 3-4 pounds)",
+      "2 lemons, sliced",
+      "6 cloves garlic, minced",
+      "2 tablespoons olive oil",
+      "1 teaspoon dried thyme",
+      "1 teaspoon dried rosemary",
+      "Salt and black pepper to taste"
+    ],
+    "equipments": [
+      "Roasting pan",
+      "Meat thermometer",
+      "Cutting board",
+      "Kitchen twine"
+    ],
+    "nutrients": {
+      "calories": "250",
+      "protein": "30g",
+      "totalFat": "13g",
+      "carbohydrates": "5g",
+      "fiber": "1g",
+      "sugar": "1g",
+      "sodium": "500mg",
+      "cholesterol": "100mg"
+    },
+    "featured": true
+  },
+  {
+    "id": 2,
+    "name": "Decadent Chocolate Mousse",
+    "image": "/images/featured2.png",
+    "smallIntro": "Indulge in the velvety richness of our Decadent Chocolate Mousse. A dessert that's sure to satisfy your sweet tooth.",
+    "intro": "Dive into the velvety indulgence of our Decadent Chocolate Mousse. This dessert transcends sweetness, offering a luxurious experience with every spoonful. Made with high-quality dark chocolate, this mousse is a celebration of rich flavors and creamy textures. Whether you're hosting a dinner party or treating yourself to a special dessert, this mousse is sure to impress. Join us as we explore the art of creating a dessert that's as delightful to make as it is to eat.",
+    "description": "Dive into the velvety indulgence of our Decadent Chocolate Mousse. A dessert that transcends sweetness!",
+    "prepInfo": "30 min - medium prep - 4 serves",
+    "prepTime": "30 min",
+    "prepLevel": "medium",
+    "serves": "4",
+    "vegan": true,
+    "ingredients": [
+      "200g dark chocolate",
+      "3 large eggs, separated",
+      "1/4 cup sugar",
+      "1 cup heavy cream",
+      "1 teaspoon vanilla extract"
+    ],
+    "equipments": ["Mixing bowls", "Whisk", "Spatula", "Serving glasses"],
+    "nutrients": {
+      "calories": "350",
+      "protein": "6g",
+      "totalFat": "25g",
+      "carbohydrates": "30g",
+      "fiber": "3g",
+      "sugar": "25g",
+      "sodium": "50mg",
+      "cholesterol": "150mg"
+    },
+    "featured": true
+  },
+  {
+    "id": 3,
+    "name": "Zesty Lemon Tart",
+    "image": "/images/featured3.png",
+    "smallIntro": "Experience the tangy delight of our Zesty Lemon Tart, a perfect balance of sweet and sour.",
+    "intro": "Our Zesty Lemon Tart is a delightful dessert that perfectly balances sweet and sour flavors. The crisp tart shell is filled with a smooth and tangy lemon curd, creating a refreshing treat that's perfect for any occasion. Whether you're a fan of citrus desserts or looking to try something new, this lemon tart is sure to impress. Join us as we guide you through the steps to create this delicious dessert, from making the tart shell to preparing the lemon curd.",
+    "description": "Experience the tangy delight of our Zesty Lemon Tart, a perfect balance of sweet and sour.",
+    "prepInfo": "50 min - hard prep - 6 serves",
+    "prepTime": "50 min",
+    "prepLevel": "hard",
+    "serves": "6",
+    "vegan": false,
+    "ingredients": [
+      "1 tart shell",
+      "1 cup lemon juice",
+      "1 cup sugar",
+      "4 large eggs",
+      "1/2 cup butter, melted",
+      "1 tablespoon lemon zest"
+    ],
+    "equipments": ["Tart pan", "Mixing bowls", "Whisk", "Zester"],
+    "nutrients": {
+      "calories": "300",
+      "protein": "5g",
+      "totalFat": "15g",
+      "carbohydrates": "40g",
+      "fiber": "1g",
+      "sugar": "30g",
+      "sodium": "200mg",
+      "cholesterol": "100mg"
+    },
+    "featured": false
+  },
+  {
+    "id": 4,
+    "name": "Spicy Vegan Tacos",
+    "image": "/images/featured4.png",
+    "smallIntro": "Savor the heat with our Spicy Vegan Tacos, packed with flavor and plant-based goodness.",
+    "intro": "Our Spicy Vegan Tacos are a flavorful and satisfying meal that's perfect for any taco lover. These tacos are filled with a spicy plant-based filling, fresh vegetables, and a zesty sauce, creating a delicious and nutritious meal. Whether you're a vegan or simply looking to try something new, these tacos are sure to impress. Join us as we guide you through the steps to create these tasty tacos, from preparing the filling to assembling the tacos.",
+    "description": "Savor the heat with our Spicy Vegan Tacos, packed with flavor and plant-based goodness.",
+    "prepInfo": "20 min - easy prep - 4 serves",
+    "prepTime": "20 min",
+    "prepLevel": "easy",
+    "serves": "4",
+    "vegan": true,
+    "ingredients": [
+      "8 small tortillas",
+      "2 cups cooked black beans",
+      "1 cup corn kernels",
+      "1 bell pepper, diced",
+      "1 onion, diced",
+      "2 tablespoons olive oil",
+      "1 teaspoon chili powder",
+      "1 teaspoon cumin",
+      "Salt and pepper to taste"
+    ],
+    "equipments": ["Skillet", "Mixing bowls", "Spatula", "Serving plates"],
+    "nutrients": {
+      "calories": "200",
+      "protein": "8g",
+      "totalFat": "8g",
+      "carbohydrates": "28g",
+      "fiber": "6g",
+      "sugar": "4g",
+      "sodium": "300mg",
+      "cholesterol": "0mg"
+    },
+    "featured": true
+  },
+  {
+    "id": 5,
+    "name": "Classic Margherita Pizza",
+    "image": "/images/featured5.png",
+    "smallIntro": "Enjoy the timeless taste of our Classic Margherita Pizza, with fresh basil and mozzarella.",
+    "intro": "Our Classic Margherita Pizza is a timeless favorite that combines a crispy crust, fresh tomato sauce, mozzarella cheese, and basil leaves. This pizza is simple yet delicious, making it a perfect choice for any pizza lover. Whether you're making pizza for a family dinner or a casual get-together, this Margherita pizza is sure to be a hit. Join us as we guide you through the steps to create this classic pizza, from making the dough to baking the pizza.",
+    "description": "Enjoy the timeless taste of our Classic Margherita Pizza, with fresh basil and mozzarella.",
+    "prepInfo": "60 min - medium prep - 8 serves",
+    "prepTime": "60 min",
+    "prepLevel": "medium",
+    "serves": "8",
+    "vegan": false,
+    "ingredients": [
+      "1 pizza dough",
+      "1 cup tomato sauce",
+      "2 cups mozzarella cheese, shredded",
+      "1/4 cup fresh basil leaves",
+      "2 tablespoons olive oil",
+      "Salt and pepper to taste"
+    ],
+    "equipments": [
+      "Pizza stone",
+      "Rolling pin",
+      "Baking sheet",
+      "Pizza cutter"
+    ],
+    "nutrients": {
+      "calories": "300",
+      "protein": "12g",
+      "totalFat": "15g",
+      "carbohydrates": "30g",
+      "fiber": "2g",
+      "sugar": "3g",
+      "sodium": "600mg",
+      "cholesterol": "30mg"
+    },
+    "featured": true
+  },
+  {
+    "id": 6,
+    "name": "Berry Bliss Smoothie",
+    "image": "/images/featured6.png",
+    "smallIntro": "Refresh yourself with our Berry Bliss Smoothie, a blend of berries and natural sweetness.",
+    "intro": "Our Berry Bliss Smoothie is a refreshing and nutritious drink that's perfect for any time of day. This smoothie is made with a blend of fresh berries, yogurt, and a touch of honey, creating a delicious and healthy treat. Whether you're looking for a quick breakfast or a post-workout snack, this smoothie is sure to satisfy. Join us as we guide you through the steps to create this delightful smoothie, from blending the ingredients to serving the smoothie.",
+    "description": "Refresh yourself with our Berry Bliss Smoothie, a blend of berries and natural sweetness.",
+    "prepInfo": "10 min - easy prep - 2 serves",
+    "prepTime": "10 min",
+    "prepLevel": "easy",
+    "serves": "2",
+    "vegan": true,
+    "ingredients": [
+      "1 cup mixed berries",
+      "1/2 cup yogurt",
+      "1/2 cup milk",
+      "1 tablespoon honey",
+      "1 teaspoon vanilla extract"
+    ],
+    "equipments": ["Blender", "Measuring cups", "Serving glasses", "Straws"],
+    "nutrients": {
+      "calories": "150",
+      "protein": "5g",
+      "totalFat": "2g",
+      "carbohydrates": "30g",
+      "fiber": "4g",
+      "sugar": "20g",
+      "sodium": "50mg",
+      "cholesterol": "10mg"
+    },
+    "featured": true
+  }
+]
