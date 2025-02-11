@@ -80,20 +80,16 @@ const Recipes = () => {
         </div>
 
         {loading ? (
-          <div className="flex flex-col md:flex-row gap-20 my-20">
+          <div className="flex flex-col md:flex-row gap-20 md:my-20">
             <SkeletonLoader />
             <SkeletonLoader />
             <SkeletonLoader />
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredRecipes.map((recipe) =>
-              loading ? (
-                <SkeletonLoader />
-              ) : (
-                <Recipe key={recipe._id} recipe={recipe} />
-              )
-            )}
+            {filteredRecipes.map((recipe) => (
+              <Recipe key={recipe._id} recipe={recipe} />
+            ))}
           </div>
         )}
       </section>
