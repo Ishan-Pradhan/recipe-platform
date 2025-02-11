@@ -2,16 +2,8 @@ import React, { useEffect, useState } from "react";
 import VeganStamp from "./VeganStamp";
 import { Link } from "react-router-dom";
 import { scrollToTop } from "../utils/scrollToTop";
-import SkeletonLoader from "./SkeletonLoader";
 
 const Recipe = ({ recipe }) => {
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    if (recipe) {
-      setLoading(false);
-    }
-  }, [recipe]);
-
   return (
     <>
       <div className="flex flex-col md:w-full h-full" key={recipe._id}>
