@@ -31,7 +31,9 @@ const SingleRecipe = () => {
     <>
       <Header />
       {loading ? (
-        <div className="animate-spin"></div>
+        <div className="flex justify-center items-center h-44">
+          <svg class="mr-3 size-5 animate-spin ..." viewBox="0 0 24 24"></svg>
+        </div>
       ) : (
         <SingleRecipeSection recipe={recipe} />
       )}
