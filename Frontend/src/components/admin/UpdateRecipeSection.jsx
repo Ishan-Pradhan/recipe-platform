@@ -219,7 +219,7 @@ const UpdateRecipeSection = () => {
 
     try {
       const res = await axios.put(
-        `/api/v1/recipes/updaterecipe/${id}`,
+        `${URL}/api/v1/recipes/updaterecipe/${id}`,
         formData,
         {
           headers: {
