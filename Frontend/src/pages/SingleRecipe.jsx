@@ -31,7 +31,7 @@ const SingleRecipe = () => {
     <>
       <Header />
       {!recipe ? (
-        <div className="flex justify-center items-center text-xl">
+        <div className="flex justify-center items-center text-xl h-96">
           No recipes found.
         </div>
       ) : (
