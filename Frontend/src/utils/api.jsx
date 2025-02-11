@@ -2,7 +2,6 @@ import axios from "axios";
 import { store } from "../redux/store";
 import { updateAccessToken, logout } from "../redux/user/userSlice";
 import { URL } from "../constants/constants";
-import { URL } from "./../constants/constants";
 
 const api = axios.create({
   baseURL: `${URL}/api/v1`,
