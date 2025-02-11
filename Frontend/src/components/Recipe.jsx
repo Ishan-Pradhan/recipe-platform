@@ -14,13 +14,6 @@ const Recipe = ({ recipe }) => {
 
   return (
     <>
-      {loading && (
-        <div className="flex gap-40">
-          <SkeletonLoader />
-          <SkeletonLoader />
-          <SkeletonLoader />
-        </div>
-      )}
       <div className="flex flex-col md:w-full h-full" key={recipe._id}>
         <img
           src={recipe.image}
