@@ -227,10 +227,10 @@ const UpdateRecipeSection = () => {
           },
         }
       );
-      toast.success("Recipe created successfully");
+      toast.success("Recipe updated successfully");
       setLoading(false);
     } catch (error) {
-      toast.error("Failed to create recipe");
+      toast.error("Failed to update recipe");
     }
   };
 
