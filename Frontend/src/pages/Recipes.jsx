@@ -6,11 +6,13 @@ import products from "../data/featured.json";
 import Recipe from "../components/Recipe";
 import axios from "axios";
 import { URL } from "../constants/constants";
+import SkeletonLoader from "../components/SkeletonLoader";
 
 const Recipes = () => {
   const [recipes, setRecipes] = useState([]);
   const [filteredRecipes, setFilteredRecipes] = useState([]);
   const [filter, setFilter] = useState("All");
+  const [loading, setLoading] = useState(true);
 
   const categories = [
     "All",
@@ -28,8 +30,10 @@ const Recipes = () => {
         const res = await axios.get(`${URL}/api/v1/recipes/allrecipes`);
         setRecipes(res.data);
         setFilteredRecipes(res.data);
+        setLoading(false);
       } catch (error) {
         console.error("Failed to fetch recipes", error);
+        setLoading(false);
       }
     };
     fetchRecipes();
@@ -48,6 +52,11 @@ const Recipes = () => {
   const handleFilterChange = (category) => {
     setFilter(category);
   };
+
+  if (loading) {
+    return <SkeletonLoader />;
+  }
+
   return (
     <>
       <Header />
