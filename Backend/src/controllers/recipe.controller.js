@@ -21,12 +21,21 @@ const createRecipe = async (req, res) => {
       category,
     } = req.body;
 
-    const foodImgLocalPath = req.files?.image[0]?.path;
+    // Use the in-memory file buffer from Multer
+    const foodImgBuffer = req.file?.buffer; // Multer stores the file in `buffer` when using memoryStorage
 
-    if (!foodImgLocalPath)
-      return res.status(400).send({ message: "product image is required" });
+    if (!foodImgBuffer) {
+      return res.status(400).send({ message: "Product image is required" });
+    }
 
-    const foodImg = await uploadOnCloudinary(foodImgLocalPath);
+    // Use the buffer to upload the image to Cloudinary
+    const foodImg = await uploadOnCloudinary(foodImgBuffer, `${name}-image`); // File name can be dynamically set
+
+    if (!foodImg) {
+      return res
+        .status(500)
+        .send({ message: "Failed to upload image to Cloudinary" });
+    }
 
     const newRecipe = new Recipe({
       name,
@@ -38,7 +47,7 @@ const createRecipe = async (req, res) => {
       equipments: JSON.parse(equipments),
       nutrients: JSON.parse(nutrients),
       instructions,
-      image: foodImg.url,
+      image: foodImg.url, // Store Cloudinary URL in your recipe
       featured,
       vegan,
       category,
