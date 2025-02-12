@@ -50,7 +50,7 @@ const createRecipe = async (req, res) => {
       .json({ message: "Recipe created successfully", recipe: newRecipe });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ error: "Internal server error" });
+    res.status(500).json({ error: error });
   }
 };
 
