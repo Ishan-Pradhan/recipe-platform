@@ -85,7 +85,13 @@ const Recipes = () => {
             <SkeletonLoader />
             <SkeletonLoader />
           </div>
+        ) : filteredRecipes.length === 0 ? (
+          // Show "No Recipes Available" when no data is fetched
+          <div className="text-center text-xl flex justify-center items-center h-96 font-semibold text-gray-600">
+            No recipes available yet.
+          </div>
         ) : (
+          // Show recipes if available
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredRecipes.map((recipe) => (
               <Recipe key={recipe._id} recipe={recipe} />

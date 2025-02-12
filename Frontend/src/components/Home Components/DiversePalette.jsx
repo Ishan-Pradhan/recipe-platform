@@ -22,7 +22,7 @@ const DiversePalette = () => {
           <Link
             to="recipesection"
             smooth={true}
-            className="bg-primaryBlue rounded-full uppercase font-semibold border-2 border-dark px-6 py-3 "
+            className="bg-primaryBlue rounded-full uppercase font-semibold border-2 border-dark px-6 py-3 cursor-pointer"
           >
             see more
           </Link>

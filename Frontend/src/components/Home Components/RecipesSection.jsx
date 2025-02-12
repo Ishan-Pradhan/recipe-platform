@@ -51,6 +51,7 @@ const RecipesSection = () => {
       data-aos="fade-up"
       data-aos-anchor-placement="top-bottom"
       data-aos-delay="200"
+      id="recipesection"
     >
       <div className="text-center mb-8">
         <h3 className="text-2xl font-bold uppercase">Our Recipes</h3>
@@ -66,7 +67,7 @@ const RecipesSection = () => {
             key={category}
             onClick={() => handleFilterChange(category)}
             className={`px-6 py-3 border border-dark rounded-full uppercase text-[14px] ${
-              filter === category ? "bg-primaryGreen text-white" : ""
+              filter === category ? "bg-primaryGreen text-dark" : ""
             }`}
           >
             {category}
