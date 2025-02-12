@@ -4,6 +4,7 @@ import AdminRecipes from "../../components/admin/AdminRecipes";
 import axios from "axios";
 import Footer from "../../components/Footer";
 import { URL } from "../../constants/constants";
+import SkeletonLoader from "../../components/SkeletonLoader";
 
 const ManageRecipe = () => {
   const [recipes, setRecipes] = useState([]);
