@@ -197,6 +197,7 @@ const CreateRecipeSection = () => {
       toast.success("Recipe created successfully");
       setIsLoading(false);
     } catch (error) {
+      console.log(error);
       toast.error("Failed to create recipe");
       setIsLoading(false);
     }

@@ -230,6 +230,7 @@ const UpdateRecipeSection = () => {
       toast.success("Recipe updated successfully");
       setLoading(false);
     } catch (error) {
+      console.log(error);
       toast.error("Failed to update recipe");
     }
   };
