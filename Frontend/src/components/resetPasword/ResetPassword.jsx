@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { toast } from "react-toastify";
 import Header from "../Header";
 import Footer from "../Footer";
 import { URL } from "../../constants/constants";
+import toast from "react-hot-toast";
 
 const ResetPassword = () => {
   const location = useLocation();

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import Recipe from "../Recipe";
 import axios from "axios";
 import { URL } from "../../constants/constants";
@@ -66,7 +65,7 @@ const RecipesSection = () => {
           <button
             key={category}
             onClick={() => handleFilterChange(category)}
-            className={`px-6 py-3 border rounded-full uppercase text-[14px] ${
+            className={`px-6 py-3 border border-dark rounded-full uppercase text-[14px] ${
               filter === category ? "bg-primaryGreen text-white" : ""
             }`}
           >

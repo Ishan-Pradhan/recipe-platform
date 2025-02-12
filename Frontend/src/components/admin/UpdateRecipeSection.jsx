@@ -3,12 +3,12 @@ import ReactQuill from "react-quill"; // For rich text editor
 import "../../index.css"; // Import css file
 import "react-quill/dist/quill.snow.css"; // Import React Quill styles
 import axios from "axios";
-import { toast } from "react-toastify";
 import Quill from "quill";
 import { useParams } from "react-router-dom";
 import Header from "../Header";
 import Footer from "../Footer";
 import { URL } from "../../constants/constants";
+import toast from "react-hot-toast";
 
 const UpdateRecipeSection = () => {
   const FontAttributor = Quill.import("attributors/class/font");

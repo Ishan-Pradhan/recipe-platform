@@ -39,16 +39,25 @@ const SearchPage = () => {
           <h1 className=" font-[800] text-[24px] uppercase">
             Search Results: {name}
           </h1>
-          {searchResults.length === 0 && (
-            <div className="h-20 flex justify-center items-center">
-              <h2 className="text-dark">No result found.</h2>
+          {loading ? (
+            <div className="flex flex-col md:flex-row gap-20 md:my-20">
+              <SkeletonLoader />
+              <SkeletonLoader />
+              <SkeletonLoader />
+            </div>
+          ) : searchResults.length === 0 ? (
+            // Show "No Recipes Available" when no data is fetched
+            <div className="text-center text-xl flex justify-center items-center h-96 font-semibold text-gray-600">
+              No recipes found.
+            </div>
+          ) : (
+            // Show recipes if available
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {searchResults.map((recipe) => (
+                <Recipe recipe={recipe} key={recipe._id} />
+              ))}
             </div>
           )}
-          <div className="grid md:grid-cols-3 gap-8">
-            {searchResults.map((recipe) => (
-              <Recipe recipe={recipe} key={recipe._id} />
-            ))}
-          </div>
         </div>
       </section>
       <Footer />

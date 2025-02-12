@@ -98,3 +98,7 @@ ul {
   z-index: 10;
   background: white;
 }
+
+.splide__track {
+  width: 100%;
+}

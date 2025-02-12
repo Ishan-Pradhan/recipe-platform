@@ -3,9 +3,9 @@ import ReactQuill from "react-quill";
 import "../../index.css";
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";
-import { toast } from "react-toastify";
 import Quill from "quill";
 import { URL } from "../../constants/constants";
+import toast from "react-hot-toast";
 
 const FontAttributor = Quill.import("attributors/class/font");
 FontAttributor.whitelist = ["roboto", "Montserrat"];

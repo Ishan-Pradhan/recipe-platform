@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { URL } from "../constants/constants";
+import toast from "react-hot-toast";
 
 const RequestOtp = () => {
   const [email, setEmail] = useState("");
@@ -36,7 +36,6 @@ const RequestOtp = () => {
       );
 
       const data = await res.data;
-      console.log(data);
       setLoading(false);
       setOtpSent(true);
       toast.success(res.data.message);

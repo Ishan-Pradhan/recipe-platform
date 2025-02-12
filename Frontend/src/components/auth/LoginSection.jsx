@@ -6,9 +6,9 @@ import {
 } from "../../redux/user/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import axios from "axios";
 import { URL } from "../../constants/constants";
+import toast from "react-hot-toast";
 
 const LoginSection = () => {
   const [formData, setFormData] = useState({});

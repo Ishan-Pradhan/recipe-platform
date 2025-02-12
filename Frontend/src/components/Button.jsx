@@ -10,7 +10,7 @@ const Button = ({ color, cases, content, border, px, py, link }) => {
       to={link ? link : ""}
       onClick={scrollToTop}
       className={`bg-${color} ${paddingX} ${paddingY} rounded-full ${cases} font-semibold ${
-        border ? "border-2" : ""
+        border ? "border-2 border-dark" : ""
       } `}
     >
       {content}{" "}

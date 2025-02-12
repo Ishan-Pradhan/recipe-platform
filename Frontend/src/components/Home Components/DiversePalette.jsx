@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "./../Button";
+import { Link, animateScroll as scroll } from "react-scroll";
 
 const DiversePalette = () => {
   return (
@@ -19,12 +19,13 @@ const DiversePalette = () => {
               selection has something to satisfy every palate.
             </p>
           </div>
-          <Button
-            color="primaryBlue"
-            cases="uppercase"
-            content="see more"
-            border="true"
-          />
+          <Link
+            to="recipesection"
+            smooth={true}
+            className="bg-primaryBlue rounded-full uppercase font-semibold border-2 border-dark px-6 py-3 "
+          >
+            see more
+          </Link>
         </div>
         <ul className="flex flex-col font-semibold gap-[16px] md:w-1/2">
           <li className="flex justify-between items-center border-b border-dark border-opacity-40 py-4">

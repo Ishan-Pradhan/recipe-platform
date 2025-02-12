@@ -36,7 +36,7 @@ const Recipe = ({ recipe }) => {
             <Link
               to={`/recipe/${recipe._id}`}
               onClick={scrollToTop}
-              className="relative bg-none border px-6 py-3 md:text-[10px] 2xl:text-[16px] rounded-full transition-all duration-100 ease-in-out uppercase font-semibold text-center hover:bg-primaryRed hover:text-light"
+              className="relative bg-none border border-dark px-6 py-3 md:text-[10px] 2xl:text-[16px] rounded-full transition-all duration-100 ease-in-out uppercase font-semibold text-center hover:bg-primaryRed hover:text-light"
             >
               view recipe
             </Link>

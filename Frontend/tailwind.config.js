@@ -13,20 +13,21 @@ module.exports = {
 
       "2xl": "1440px",
     },
-    colors: {
-      primaryRed: "#EE6352",
-      primaryGreen: "#9FDC26",
-      primaryOrange: "#F29C33",
-      primaryBlue: "#C4E5FC",
-      dark: "#262522",
-      light: "#FFFBF2",
-      background: "#F0EBE1",
-    },
+
     fontFamily: {
       author: "Homemade Apple",
       roboto: "Roboto",
     },
     extend: {
+      colors: {
+        primaryRed: "#EE6352",
+        primaryGreen: "#9FDC26",
+        primaryOrange: "#F29C33",
+        primaryBlue: "#C4E5FC",
+        dark: "#262522",
+        light: "#FFFBF2",
+        background: "#F0EBE1",
+      },
       backgroundImage: {
         hero: "url('/images/hero-png')",
       },

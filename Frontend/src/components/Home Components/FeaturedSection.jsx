@@ -6,6 +6,7 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import axios from "axios";
 import { URL } from "../../constants/constants";
+import SkeletonLoader from "./../SkeletonLoader";
 
 const FeaturedSection = () => {
   const splideRef = useRef(null);
@@ -22,6 +23,7 @@ const FeaturedSection = () => {
     }
   };
   const [recipes, setRecipes] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchRecipes = async () => {
@@ -29,8 +31,10 @@ const FeaturedSection = () => {
         const res = await axios.get(`${URL}/api/v1/recipes/allrecipes`);
         console.log("api response :", res.data);
         setRecipes(res.data);
+        setLoading(false);
       } catch (error) {
         console.error("Failed to fetch recipes", error);
+        setLoading(false);
       }
     };
 
@@ -73,13 +77,26 @@ const FeaturedSection = () => {
           }}
           className="flex flex-col md:flex-row md:w-full justify-between gap-[16px]"
         >
-          {recipes.map(
-            (recipe) =>
-              recipe.featured && (
-                <SplideSlide key={recipe._id} className="flex flex-col">
-                  <Recipe recipe={recipe} />
-                </SplideSlide>
-              )
+          {loading ? (
+            [...Array(2)].map((_, i) => (
+              <SplideSlide key={i} className="flex flex-col">
+                <SkeletonLoader />
+              </SplideSlide>
+            ))
+          ) : recipes.length === 0 ? (
+            // Show "No Recipes Available" when no data is fetched
+            <div className="text-center text-xl flex justify-center items-center h-96 font-semibold text-gray-600">
+              No recipes available yet.
+            </div>
+          ) : (
+            recipes.map(
+              (recipe) =>
+                recipe.featured && (
+                  <SplideSlide key={recipe._id} className="flex flex-col">
+                    <Recipe recipe={recipe} />
+                  </SplideSlide>
+                )
+            )
           )}
         </Splide>
       </div>

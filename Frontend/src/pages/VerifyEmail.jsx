@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import { toast } from "react-toastify";
 import { URL } from "../constants/constants";
+import toast from "react-hot-toast";
 
 const VerifyEmail = () => {
   const { email } = useParams();
@@ -32,7 +32,6 @@ const VerifyEmail = () => {
       );
 
       const data = await res.data;
-      console.log(data);
       setLoading(false);
       setError(false);
       toast.success(res.data.message);
