@@ -22,7 +22,6 @@ const createRecipe = async (req, res) => {
     } = req.body;
 
     const foodImgLocalPath = req.files?.image[0]?.path;
-    console.log(foodImgLocalPath);
 
     if (!foodImgLocalPath)
       return res.status(400).send({ message: "product image is required" });
@@ -127,7 +126,6 @@ const deleteRecipe = async (req, res) => {
 const saveRecipe = asyncHandler(async (req, res) => {
   try {
     const { recipeId } = req.params;
-    console.log(recipeId);
     const { userId } = req.body;
 
     const user = await User.findById(userId);
