@@ -4,10 +4,11 @@ import multer from "multer";
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "./public/temp");
+    // Use absolute path to the 'public/temp' directory
+    const tempDir = path.join(__dirname, "public", "temp");
+    cb(null, tempDir);
   },
   filename: function (req, file, cb) {
-    // const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
     cb(null, file.originalname);
   },
 });
