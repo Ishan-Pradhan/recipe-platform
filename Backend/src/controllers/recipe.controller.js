@@ -336,7 +336,7 @@ const getSavedRecipes = async (req, res) => {
   }
 };
 
-// API endpoint to check if a recipe is saved by the user in singleRecipepage
+// API endpoint to check if a recipe is saved by the user in singleRecipe page
 const getSavedStatus = async (req, res) => {
   try {
     const { userId, recipeId } = req.params;
