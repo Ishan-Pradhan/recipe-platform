@@ -7,13 +7,17 @@ import { URL } from "../../constants/constants";
 
 const ManageRecipe = () => {
   const [recipes, setRecipes] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
         const res = await axios.get(`${URL}/api/v1/recipes/allrecipes`);
         console.log(res.data);
         setRecipes(res.data);
+        setLoading(false);
       } catch (error) {
+        setLoading(false);
         console.error("Failed to fetch recipes", error);
       }
     };
@@ -28,11 +32,19 @@ const ManageRecipe = () => {
           <h1 className="text-center font-[800] text-[24px] uppercase">
             Manage Recipes
           </h1>
-          <div className="grid md:grid-cols-3 gap-8">
-            {recipes.map((recipe) => (
-              <AdminRecipes recipe={recipe} />
-            ))}
-          </div>
+          {loading ? (
+            <div className="flex flex-col md:flex-row gap-20 md:my-20">
+              <SkeletonLoader />
+              <SkeletonLoader />
+              <SkeletonLoader />
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-3 gap-8">
+              {recipes.map((recipe) => (
+                <AdminRecipes recipe={recipe} />
+              ))}
+            </div>
+          )}
         </div>
       </section>
       <Footer />

@@ -70,7 +70,7 @@ const Recipes = () => {
             <button
               key={category}
               onClick={() => handleFilterChange(category)}
-              className={`px-6 py-3 border dark rounded-full uppercase text-[14px] ${
+              className={`px-6 py-3 border border-dark rounded-full uppercase text-[14px] ${
                 filter === category ? "bg-primaryGreen text-dark" : ""
               }`}
             >
