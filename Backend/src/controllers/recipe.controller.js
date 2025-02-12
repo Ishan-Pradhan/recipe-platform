@@ -86,12 +86,16 @@ const updateRecipe = async (req, res) => {
       return res.status(404).send({ message: "Recipe not found" });
     }
 
-    if (req.files?.image) {
-      const foodImgLocalPath = req.files.image[0].path;
-      const foodImg = await uploadOnCloudinary(foodImgLocalPath);
-      recipe.image = foodImg.url;
+    // If an image is provided, upload to Cloudinary
+    if (req.file) {
+      const foodImgBuffer = req.file.buffer; // Get file buffer from Multer
+      const foodImg = await uploadOnCloudinary(foodImgBuffer, `${name}-image`);
+      if (foodImg) {
+        recipe.image = foodImg.url;
+      }
     }
 
+    // Update fields if provided, otherwise keep old values
     recipe.name = name || recipe.name;
     recipe.smallIntro = smallIntro || recipe.smallIntro;
     recipe.prepTime = prepTime || recipe.prepTime;
@@ -110,7 +114,7 @@ const updateRecipe = async (req, res) => {
     await recipe.save();
     res.status(200).json({ message: "Recipe updated successfully", recipe });
   } catch (error) {
-    console.log(error);
+    console.error(error);
     res.status(500).send({ message: "Server error" });
   }
 };

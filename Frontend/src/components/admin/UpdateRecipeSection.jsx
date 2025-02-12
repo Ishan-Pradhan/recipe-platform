@@ -268,6 +268,7 @@ const UpdateRecipeSection = () => {
               </label>
               <input
                 type="file"
+                name="image"
                 accept="image/*"
                 onChange={handleImageUpload}
               />

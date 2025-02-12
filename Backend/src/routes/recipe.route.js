@@ -23,9 +23,7 @@ const router = Router();
 
 router.route("/createrecipe").post(upload.single("image"), createRecipe);
 
-router
-  .route("/updaterecipe/:id")
-  .put(upload.fields([{ name: "image", maxCount: 1 }]), updateRecipe);
+router.route("/updaterecipe/:id").put(upload.single("image"), updateRecipe);
 
 router.route("/deleterecipe/:id").delete(verifyJWT, deleteRecipe);
 router.route("/saverecipe/:recipeId").post(verifyJWT, saveRecipe);
