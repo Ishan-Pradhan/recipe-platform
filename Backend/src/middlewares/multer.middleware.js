@@ -1,14 +1,13 @@
 import multer from "multer";
 import { v2 as cloudinary } from "cloudinary";
-import fs from "fs";
+import streamifier from "streamifier";
+import dotenv from "dotenv";
 
-// Multer in-memory storage configuration
+dotenv.config(); // Load environment variables
+
+// Multer in-memory storage
 const storage = multer.memoryStorage();
-
-export const upload = multer({
-  storage,
-  limits: { fileSize: 25 * 1024 * 1024 }, // Limit file size to 25 MB
-});
+export const upload = multer({ storage });
 
 // Cloudinary configuration
 cloudinary.config({
@@ -17,44 +16,25 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-// Function to upload the image to Cloudinary
-const uploadOnCloudinary = async (fileBuffer, fileName) => {
-  try {
-    if (!fileBuffer) return null;
-
-    // Upload the file to Cloudinary using in-memory buffer
-    const response = await cloudinary.uploader.upload_stream(
+// Function to upload an image buffer to Cloudinary using a stream
+export const uploadOnCloudinary = async (fileBuffer, fileName) => {
+  return new Promise((resolve, reject) => {
+    const stream = cloudinary.uploader.upload_stream(
       {
         resource_type: "auto",
-        public_id: fileName, // Optionally, set a custom public ID
+        public_id: fileName, // Set a custom file name
         secure: true,
       },
       (error, result) => {
         if (error) {
-          console.error("Cloudinary upload failed", error);
-          return null;
+          console.error("Cloudinary upload failed:", error);
+          reject(error);
+        } else {
+          resolve(result);
         }
-        return result;
       }
     );
 
-    // Stream the file buffer into Cloudinary
-    const stream = cloudinary.uploader.upload_stream(
-      { resource_type: "auto" },
-      (error, result) => {
-        if (error) {
-          console.error(error);
-        }
-        return result;
-      }
-    );
-
-    stream.end(fileBuffer); // Send file buffer to Cloudinary
-    return response;
-  } catch (error) {
-    console.log(error);
-    return null;
-  }
+    streamifier.createReadStream(fileBuffer).pipe(stream); // Send buffer to Cloudinary
+  });
 };
-
-export { uploadOnCloudinary };

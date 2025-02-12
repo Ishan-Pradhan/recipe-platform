@@ -21,9 +21,7 @@ import {
 
 const router = Router();
 
-router
-  .route("/createrecipe")
-  .post(upload.fields([{ name: "image", maxCount: 1 }]), createRecipe);
+router.route("/createrecipe").post(upload.single("image"), createRecipe);
 
 router
   .route("/updaterecipe/:id")

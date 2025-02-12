@@ -23,22 +23,19 @@ const createRecipe = async (req, res) => {
       category,
     } = req.body;
 
-    // Use the in-memory file buffer from Multer
-    const foodImgBuffer = req.file?.buffer; // Multer stores the file in `buffer` when using memoryStorage
-
-    if (!foodImgBuffer) {
-      return res.status(400).send({ message: "Product image is required" });
+    // Ensure an image is uploaded
+    if (!req.file) {
+      return res.status(400).json({ message: "Recipe image is required" });
     }
 
-    // Use the buffer to upload the image to Cloudinary
-    const foodImg = await uploadOnCloudinary(foodImgBuffer, `${name}-image`); // File name can be dynamically set
+    // Upload image to Cloudinary
+    const foodImg = await uploadOnCloudinary(req.file.buffer, `${name}-image`);
 
-    if (!foodImg) {
-      return res
-        .status(500)
-        .send({ message: "Failed to upload image to Cloudinary" });
+    if (!foodImg || !foodImg.url) {
+      return res.status(500).json({ message: "Failed to upload image" });
     }
 
+    // Save recipe to database
     const newRecipe = new Recipe({
       name,
       smallIntro,
@@ -49,7 +46,7 @@ const createRecipe = async (req, res) => {
       equipments: JSON.parse(equipments),
       nutrients: JSON.parse(nutrients),
       instructions,
-      image: foodImg.url, // Store Cloudinary URL in your recipe
+      image: foodImg.url, // Store Cloudinary image URL
       featured,
       vegan,
       category,
@@ -60,8 +57,8 @@ const createRecipe = async (req, res) => {
       .status(201)
       .json({ message: "Recipe created successfully", recipe: newRecipe });
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: error });
+    console.error("Error creating recipe:", error);
+    res.status(500).json({ message: "Internal Server Error", error });
   }
 };
 
