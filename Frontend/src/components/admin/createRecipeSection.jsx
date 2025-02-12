@@ -134,7 +134,7 @@ const CreateRecipeSection = () => {
   const handleImageUpload = (e) => {
     setRecipe((prevRecipe) => ({
       ...prevRecipe,
-      image: e.target.files[0],
+      image: e.target.files[0], // This is the file selected by the user
     }));
   };
 

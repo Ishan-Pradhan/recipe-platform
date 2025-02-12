@@ -1,6 +1,8 @@
+import { uploadOnCloudinary } from "../middlewares/multer.middleware.js";
 import { Recipe } from "../models/recipe.model.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
-import { uploadOnCloudinary } from "../utils/cloudinary.js";
+// import { uploadOnCloudinary } from "../utils/cloudinary.js";
+
 import { User } from "./../models/user.model.js";
 
 // Create Recipe Controller
