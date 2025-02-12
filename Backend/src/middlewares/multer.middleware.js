@@ -9,17 +9,17 @@ import path from "path";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Use absolute path for the 'public/temp' directory
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    // Use the absolute path
-    const tempDir = path.join(__dirname, "public", "temp");
+    // Make sure you're referencing the correct path from the root of your project
+    const tempDir = path.join(__dirname, "../../public", "temp"); // Adjust path to the root of the project
     cb(null, tempDir);
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname);
   },
 });
-
 export const upload = multer({
   storage,
   limits: { fileSize: 25 * 1024 * 1024 },
