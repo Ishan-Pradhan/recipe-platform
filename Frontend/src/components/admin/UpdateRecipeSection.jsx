@@ -269,7 +269,6 @@ const UpdateRecipeSection = () => {
                 type="file"
                 accept="image/*"
                 onChange={handleImageUpload}
-                className=""
               />
             </div>
 
