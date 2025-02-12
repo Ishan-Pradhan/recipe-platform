@@ -198,6 +198,7 @@ const CreateRecipeSection = () => {
       setIsLoading(false);
     } catch (error) {
       toast.error("Failed to create recipe");
+      setIsLoading(false);
     }
   };
 

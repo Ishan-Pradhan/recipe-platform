@@ -3,12 +3,13 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 
 const app = express();
-
+app.use(cookieParser());
 app.use(
   cors({
     origin: process.env.CORS_ORIGIN,
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
+    allowedHeaders: "Content-Type,Authorization",
   })
 );
 
@@ -27,7 +28,6 @@ app.use(
 );
 
 app.use(express.static("public"));
-app.use(cookieParser());
 
 //routes imports
 import userRouter from "./routes/user.routes.js";
