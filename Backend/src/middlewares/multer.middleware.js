@@ -1,11 +1,17 @@
 import multer from "multer";
-import path from "path";
 
 //cb = callback
 
+import { fileURLToPath } from "url";
+import path from "path";
+
+// Get the current directory of the module
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    // Use absolute path to the 'public/temp' directory
+    // Use the absolute path
     const tempDir = path.join(__dirname, "public", "temp");
     cb(null, tempDir);
   },
