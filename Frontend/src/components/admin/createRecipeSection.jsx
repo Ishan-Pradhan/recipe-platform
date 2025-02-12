@@ -236,6 +236,7 @@ const CreateRecipeSection = () => {
             <input
               type="file"
               accept="image/*"
+              name="image"
               onChange={handleImageUpload}
               required
               className=""

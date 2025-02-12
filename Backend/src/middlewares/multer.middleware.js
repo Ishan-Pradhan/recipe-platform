@@ -27,6 +27,7 @@ const uploadOnCloudinary = async (fileBuffer, fileName) => {
       {
         resource_type: "auto",
         public_id: fileName, // Optionally, set a custom public ID
+        secure: true,
       },
       (error, result) => {
         if (error) {
