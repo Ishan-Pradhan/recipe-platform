@@ -12,7 +12,7 @@ const Recipes = () => {
   const [filter, setFilter] = useState("All");
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const [recipesPerPage] = useState(6); // You can change this value to control how many recipes per page.
+  const [recipesPerPage] = useState(6);
 
   const categories = [
     "All",
@@ -55,7 +55,6 @@ const Recipes = () => {
     setFilter(category);
   };
 
-  // Calculate the index of the first and last recipe for the current page
   const indexOfLastRecipe = currentPage * recipesPerPage;
   const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
   const currentRecipes = filteredRecipes.slice(
