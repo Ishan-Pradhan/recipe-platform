@@ -125,6 +125,22 @@ const SingleRecipeSection = ({ recipe }) => {
     }
   };
 
+  const handleSocialShare = (platform) => {
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent(`Check out this recipe: ${recipe.name}!`);
+
+    let shareUrl = "";
+    if (platform === "facebook") {
+      shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+    } else if (platform === "twitter") {
+      shareUrl = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
+    } else if (platform === "whatsapp") {
+      shareUrl = `https://api.whatsapp.com/send?text=${text} ${url}`;
+    }
+
+    window.open(shareUrl, "_blank");
+  };
+
   return (
     <section className="container mx-auto mb-10">
       <div className="mx-4   flex flex-col items-center gap-[40px] border border-dark border-opacity-20 rounded-[24px] py-4 px-4  md:gap-[40px] md:rounded-[32px]">
@@ -182,9 +198,18 @@ const SingleRecipeSection = ({ recipe }) => {
                     share{" "}
                   </span>
                   <div className="flex gap-4">
-                    <i className="fa-brands fa-facebook  text-[18px]"></i>
-                    <i className="fa-brands fa-instagram  text-[18px]"></i>
-                    <i className="fa-brands fa-youtube  text-[18px]"></i>
+                    <i
+                      className="fa-brands fa-facebook  text-[18px]"
+                      onClick={() => handleSocialShare("facebook")}
+                    ></i>
+                    <i
+                      className="fa-brands fa-instagram  text-[18px]"
+                      onClick={() => handleSocialShare("twitter")}
+                    ></i>
+                    <i
+                      className="fa-brands fa-youtube  text-[18px]"
+                      onClick={() => handleSocialShare("whatsapp")}
+                    ></i>
                   </div>
                 </div>
                 {currentUser && (
