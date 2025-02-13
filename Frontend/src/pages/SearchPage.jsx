@@ -12,6 +12,7 @@ const SearchPage = () => {
   const name = params.get("name");
 
   const [searchResults, setSearchResults] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchRecipes = async () => {
@@ -21,7 +22,9 @@ const SearchPage = () => {
           recipe.name.toLowerCase().includes(name.toLowerCase())
         );
         setSearchResults(filteredResults);
+        setLoading(false);
       } catch (error) {
+        setLoading(false);
         console.error("Failed to fetch recipes", error);
       }
     };
