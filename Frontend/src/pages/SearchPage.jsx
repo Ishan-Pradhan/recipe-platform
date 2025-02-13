@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import axios from "axios";
 import Recipe from "../components/Recipe";
 import { URL } from "../constants/constants";
+import SkeletonLoader from "../components/SkeletonLoader";
 
 const SearchPage = () => {
   const location = useLocation();
