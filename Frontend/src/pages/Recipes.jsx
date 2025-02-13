@@ -125,7 +125,7 @@ const Recipes = () => {
         <div className="flex justify-center mt-8">
           <ul className="flex gap-4">
             {pageNumbers.map((number) => (
-              <li key={number}>
+              <li className="list-none" key={number}>
                 <button
                   onClick={() => paginate(number)}
                   className={`px-4 py-2 rounded-full border ${
