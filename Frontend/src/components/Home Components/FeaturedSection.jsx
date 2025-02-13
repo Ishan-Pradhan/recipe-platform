@@ -48,13 +48,13 @@ const FeaturedSection = () => {
           <h3 className="uppercase text-2xl font-bold">featured recipes</h3>
           <div className="flex gap-4">
             <div
-              className="border h-10 w-10 flex justify-center items-center rounded-full cursor-pointer hover:bg-primaryRed hover:text-light transition-all duration-300 ease-in-out"
+              className="border border-dark h-10 w-10 flex justify-center items-center rounded-full cursor-pointer hover:bg-primaryRed hover:text-light transition-all duration-300 ease-in-out"
               onClick={goToPrev}
             >
               <i className="fa-solid fa-chevron-left"></i>
             </div>
             <div
-              className="border h-10 w-10 flex justify-center items-center rounded-full cursor-pointer  hover:bg-primaryRed hover:text-light transition-all duration-300 ease-in-out"
+              className="border border-dark h-10 w-10 flex justify-center items-center rounded-full cursor-pointer  hover:bg-primaryRed hover:text-light transition-all duration-300 ease-in-out"
               onClick={goToNext}
             >
               <i className="fa-solid fa-chevron-right"></i>

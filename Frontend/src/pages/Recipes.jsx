@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import Product from "../components/Home Components/Product";
-import products from "../data/featured.json";
 import Recipe from "../components/Recipe";
 import axios from "axios";
 import { URL } from "../constants/constants";
@@ -41,10 +39,10 @@ const Recipes = () => {
 
   useEffect(() => {
     if (filter === "All") {
-      setFilteredRecipes(recipes.slice(0, 6));
+      setFilteredRecipes(recipes);
     } else {
       setFilteredRecipes(
-        recipes.filter((recipe) => recipe.category === filter).slice(0, 6)
+        recipes.filter((recipe) => recipe.category === filter)
       );
     }
   }, [filter, recipes]);

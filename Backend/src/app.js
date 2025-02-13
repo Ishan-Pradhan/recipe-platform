@@ -15,7 +15,7 @@ app.use(
 
 app.use(
   express.json({
-    limit: "10mb",
+    limit: "30mb",
   })
 );
 
@@ -23,7 +23,7 @@ app.use(
   express.urlencoded({
     // to support URL-encoded bodies
     extended: true,
-    limit: "10mb",
+    limit: "30mb",
   })
 );
 
