@@ -37,8 +37,11 @@ const AdminRecipes = ({ recipe }) => {
             {recipe.smallIntro}
           </p>
         </div>
-        <div className="flex  gap-[16px] md:flex-row justify-between  items-center">
-          <button onClick={handleDelete} className="text-red-600">
+        <div className="flex  gap-[16px] md:flex-row justify-between  items-center ">
+          <button
+            onClick={handleDelete}
+            className="text-red-600 hover:text-red-800 transition-all ease-in-out duration-100"
+          >
             Delete
           </button>
 
