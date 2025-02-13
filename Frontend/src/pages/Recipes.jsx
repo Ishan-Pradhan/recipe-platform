@@ -132,7 +132,7 @@ const Recipes = () => {
               <li className="list-none" key={number}>
                 <button
                   onClick={() => paginate(number)}
-                  className={`px-4 py-2 rounded-full border ${
+                  className={`px-4 py-2 rounded-full border border-dark ${
                     currentPage === number
                       ? "bg-primaryGreen text-dark"
                       : "text-dark"
