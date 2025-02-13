@@ -24,7 +24,7 @@ const ManageRecipe = () => {
     };
 
     fetchRecipes();
-  }, []);
+  }, [recipes]);
   return (
     <>
       <Header />

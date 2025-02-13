@@ -1,25 +1,13 @@
-import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../../utils/api";
 import toast from "react-hot-toast";
 
 const AdminRecipes = ({ recipe }) => {
-  const [deleted, setDeleted] = useState(false); // Track if recipe is deleted
-  const navigate = useNavigate();
-
   async function handleDelete() {
     const id = recipe._id;
     await api.delete(`/recipes/deleteRecipe/${id}`);
-    setDeleted(true); // Mark the recipe as deleted
     toast.success("Recipe Deleted");
   }
-
-  useEffect(() => {
-    if (deleted) {
-      // If the recipe is deleted, reload the page
-      navigate("/dashboard/admin/managerecipe", { replace: true });
-    }
-  }, [deleted, navigate]);
 
   return (
     <div className="flex flex-col md:w-full h-full" key={recipe.id}>
@@ -47,7 +35,7 @@ const AdminRecipes = ({ recipe }) => {
 
           <Link
             to={`/dashboard/admin/updaterecipe/${recipe._id}`}
-            className="bg-none border px-6 py-3 md:text-[10px] 2xl:text-[16px] rounded-full uppercase font-semibold text-center"
+            className="bg-none border border-dark px-6 py-3 md:text-[10px] 2xl:text-[16px] rounded-full uppercase font-semibold text-center"
           >
             Update
           </Link>
