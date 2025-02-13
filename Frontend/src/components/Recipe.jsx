@@ -26,12 +26,6 @@ const Recipe = ({ recipe }) => {
               {recipe.prepTime} - {recipe.prepLevel} PREP - {recipe.serves}{" "}
               serves
             </span>
-            {/* <Button
-            color="background"
-            border="true"
-            cases="uppercase"
-            content="view recipe"
-          /> */}
 
             <Link
               to={`/recipe/${recipe._id}`}
