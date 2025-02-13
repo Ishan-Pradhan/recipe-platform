@@ -7,11 +7,13 @@ const Recipe = ({ recipe }) => {
   return (
     <>
       <div className="flex flex-col md:w-full h-full" key={recipe._id}>
-        <img
-          src={recipe.image}
-          className="object-contain h-64 w-full rounded-t-[16px]"
-          alt=""
-        />
+        <div className="h-64 w-full rounded-t-[16px] overflow-hidden">
+          <img
+            src={recipe.image}
+            className="object-cover h-full w-full "
+            alt=""
+          />
+        </div>
         <div className="flex flex-col justify-between gap-[40px] bg-light p-[24px] rounded-b-[16px] relative h-full">
           <div className="flex flex-col justify-between  gap-[12px] h-full">
             <h3 className="text-[21px]  2xl:text-[21px] leading-[25.2px] tracking-[-1%] uppercase font-bold ">
