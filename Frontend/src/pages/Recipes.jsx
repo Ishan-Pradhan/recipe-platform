@@ -11,6 +11,8 @@ const Recipes = () => {
   const [filteredRecipes, setFilteredRecipes] = useState([]);
   const [filter, setFilter] = useState("All");
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [recipesPerPage] = useState(6); // You can change this value to control how many recipes per page.
 
   const categories = [
     "All",
@@ -45,11 +47,34 @@ const Recipes = () => {
         recipes.filter((recipe) => recipe.category === filter)
       );
     }
+    // Reset to the first page whenever the filter is changed
+    setCurrentPage(1);
   }, [filter, recipes]);
 
   const handleFilterChange = (category) => {
     setFilter(category);
   };
+
+  // Calculate the index of the first and last recipe for the current page
+  const indexOfLastRecipe = currentPage * recipesPerPage;
+  const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
+  const currentRecipes = filteredRecipes.slice(
+    indexOfFirstRecipe,
+    indexOfLastRecipe
+  );
+
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  // Calculate total pages
+  const pageNumbers = [];
+  for (
+    let i = 1;
+    i <= Math.ceil(filteredRecipes.length / recipesPerPage);
+    i++
+  ) {
+    pageNumbers.push(i);
+  }
 
   return (
     <>
@@ -91,11 +116,31 @@ const Recipes = () => {
         ) : (
           // Show recipes if available
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredRecipes.map((recipe) => (
+            {currentRecipes.map((recipe) => (
               <Recipe key={recipe._id} recipe={recipe} />
             ))}
           </div>
         )}
+
+        {/* Pagination Controls */}
+        <div className="flex justify-center mt-8">
+          <ul className="flex gap-4">
+            {pageNumbers.map((number) => (
+              <li key={number}>
+                <button
+                  onClick={() => paginate(number)}
+                  className={`px-4 py-2 rounded-full border ${
+                    currentPage === number
+                      ? "bg-primaryGreen text-dark"
+                      : "text-dark"
+                  }`}
+                >
+                  {number}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
       </section>
       <Footer />
     </>
