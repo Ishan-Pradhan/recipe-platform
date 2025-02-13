@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import api from "../../utils/api";
 import toast from "react-hot-toast";
+import { scrollToTop } from "../../utils/scrollToTop";
 
 const AdminRecipes = ({ recipe }) => {
   async function handleDelete() {
@@ -35,6 +36,7 @@ const AdminRecipes = ({ recipe }) => {
 
           <Link
             to={`/dashboard/admin/updaterecipe/${recipe._id}`}
+            onClick={scrollToTop}
             className="bg-none border border-dark px-6 py-3 md:text-[10px] 2xl:text-[16px] rounded-full uppercase font-semibold text-center"
           >
             Update
