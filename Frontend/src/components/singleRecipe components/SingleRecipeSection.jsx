@@ -4,6 +4,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteSavedRecipe, saveRecipe } from "../../redux/user/userSlice";
 import api from "../../utils/api";
+import { scrollToTop } from "../../utils/scrollToTop";
 
 const SingleRecipeSection = ({ recipe }) => {
   const [comments, setComments] = useState(recipe.comments || []);
@@ -258,7 +259,8 @@ const SingleRecipeSection = ({ recipe }) => {
                   </div>
                   <Link
                     to="/aboutus"
-                    className="px-6 py-3 bg-background uppercase font-semibold border-2 border-dark rounded-[24px] self-start "
+                    onClick={scrollToTop}
+                    className="px-6 py-3 bg-background uppercase font-semibold border-2 border-dark rounded-[24px] self-start hover:bg-primaryRed hover:text-light transition-all ease-in-out duration-500"
                   >
                     learn more
                   </Link>
