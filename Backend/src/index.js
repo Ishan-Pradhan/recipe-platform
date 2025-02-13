@@ -7,7 +7,7 @@ import connectDB from "./db/index.js";
 import app from "./app.js";
 
 app.get("/", (req, res) => {
-  res.send("<h1>Hello World</h1>");
+  res.send("<h1>Recipe API</h1>");
 });
 
 connectDB()
