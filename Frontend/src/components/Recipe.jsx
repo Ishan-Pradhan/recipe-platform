@@ -9,7 +9,7 @@ const Recipe = ({ recipe }) => {
       <div className="flex flex-col md:w-full h-full" key={recipe._id}>
         <img
           src={recipe.image}
-          className="object-cover h-64 w-full rounded-t-[16px]"
+          className="object-contain h-64 w-full rounded-t-[16px]"
           alt=""
         />
         <div className="flex flex-col justify-between gap-[40px] bg-light p-[24px] rounded-b-[16px] relative h-full">
