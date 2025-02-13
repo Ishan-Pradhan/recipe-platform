@@ -5,6 +5,7 @@ import Recipe from "../components/Recipe";
 import axios from "axios";
 import { URL } from "../constants/constants";
 import SkeletonLoader from "../components/SkeletonLoader";
+import { scrollToTop } from "../utils/scrollToTop";
 
 const Recipes = () => {
   const [recipes, setRecipes] = useState([]);
@@ -63,7 +64,10 @@ const Recipes = () => {
   );
 
   // Change page
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber) => {
+    scrollToTop();
+    setCurrentPage(pageNumber);
+  };
 
   // Calculate total pages
   const pageNumbers = [];
