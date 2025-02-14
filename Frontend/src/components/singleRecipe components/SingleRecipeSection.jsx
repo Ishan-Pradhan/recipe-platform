@@ -352,7 +352,7 @@ const SingleRecipeSection = ({ recipe }) => {
                                     >
                                       Edit
                                     </button>
-                                    {currentUser?.data?.user?.role ===
+                                    {currentUser?.data?.user?.role !==
                                       "admin" && (
                                       <button
                                         onClick={() =>
@@ -363,13 +363,15 @@ const SingleRecipeSection = ({ recipe }) => {
                                         Delete
                                       </button>
                                     )}
-                                    {currentUser?.data?.user?.role ===
-                                      "admin" && (
+                                    {(currentUser?.data?.user?._id ===
+                                      comment?.user ||
+                                      currentUser?.data?.user?.role ===
+                                        "admin") && (
                                       <button
                                         onClick={() =>
                                           handleAdminDeleteComment(comment._id)
                                         }
-                                        className=" text-sm  font-medium underline  "
+                                        className=" text-sm  font-medium underline text-red-500 "
                                       >
                                         Delete
                                       </button>
