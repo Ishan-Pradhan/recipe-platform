@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import Recipe from "../../components/Recipe";
 import api from "../../utils/api";
+import SkeletonLoader from "../../components/SkeletonLoader";
 
 const SavedRecipe = () => {
   const [savedRecipes, setSavedRecipes] = useState([]);
