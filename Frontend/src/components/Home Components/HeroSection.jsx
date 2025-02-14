@@ -9,7 +9,7 @@ const HeroSection = () => {
           backgroundImage:
             'linear-gradient(to bottom,rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)),url("images/hero.png")',
         }}
-        className="mx-4   bg-cover rounded-[24px] md:rounded-[42px] h-[75vh] md:h-[80vh] flex flex-col justify-center items-center gap-[40px] font-[800px] px-2"
+        className="mx-4   bg-cover rounded-[24px] md:rounded-[42px] h-[80vh] md:h-[80vh] flex flex-col justify-center items-center gap-[40px] font-[800px] px-2"
       >
         <div className="flex flex-col justify-center items-center gap-[10px] md:w-2/3  text-center">
           <h1
