@@ -39,7 +39,7 @@ const RegisterSection = () => {
   const onSubmit = async (data) => {
     try {
       setLoading(true);
-      const res = await axios.post(`${URL}/api/v1/users/register`, formData, {
+      const res = await axios.post(`${URL}/api/v1/users/register`, data, {
         headers: { "Content-Type": "application/json" },
       });
       toast.success(res.data.message);
