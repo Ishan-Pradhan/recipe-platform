@@ -26,8 +26,6 @@ const generateAccessAndRefreshTokens = async (userId) => {
 const registerUser = asyncHandler(async (req, res) => {
   const { username, email, password } = req.body;
 
-  console.log(username, email, password);
-
   if ([username, email, password].some((field) => field.trim() === "")) {
     res.status(400).send({ message: "All fields are required" });
   }

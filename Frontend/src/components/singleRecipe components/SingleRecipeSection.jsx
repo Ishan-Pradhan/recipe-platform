@@ -200,15 +200,15 @@ const SingleRecipeSection = ({ recipe }) => {
                   </span>
                   <div className="flex gap-4">
                     <i
-                      className="fa-brands fa-facebook  text-[18px]"
+                      className="fa-brands fa-facebook  text-[18px] hover:text-primaryRed"
                       onClick={() => handleSocialShare("facebook")}
                     ></i>
                     <i
-                      className="fa-brands fa-x-twitter  text-[18px]"
+                      className="fa-brands fa-x-twitter  text-[18px] hover:text-primaryRed"
                       onClick={() => handleSocialShare("twitter")}
                     ></i>
                     <i
-                      className="fa-brands fa-whatsapp  text-[18px]"
+                      className="fa-brands fa-whatsapp  text-[18px] hover:text-primaryRed"
                       onClick={() => handleSocialShare("whatsapp")}
                     ></i>
                   </div>
