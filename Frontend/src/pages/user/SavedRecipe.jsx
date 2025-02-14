@@ -9,6 +9,7 @@ import api from "../../utils/api";
 const SavedRecipe = () => {
   const [savedRecipes, setSavedRecipes] = useState([]);
   const { currentUser } = useSelector((state) => state.user);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchSavedRecipes = async () => {
@@ -17,8 +18,10 @@ const SavedRecipe = () => {
           `/recipes/savedrecipes/${currentUser.data.user._id}`
         ); // ✅ No need to pass headers
         setSavedRecipes(res.data.savedRecipes);
+        setLoading(false);
       } catch (error) {
         console.error("Failed to fetch saved recipes", error);
+        setLoading(false);
       }
     };
 
@@ -35,16 +38,24 @@ const SavedRecipe = () => {
           <h1 className="text-center font-[800] text-[24px] uppercase">
             Saved Recipes
           </h1>
-          {savedRecipes.length === 0 && (
+
+          {loading ? (
+            <div className="flex flex-col md:flex-row gap-20 md:my-20">
+              <SkeletonLoader />
+              <SkeletonLoader />
+              <SkeletonLoader />
+            </div>
+          ) : savedRecipes.length === 0 ? (
             <div className="h-48 flex justify-center items-center">
               <h3>You have not saved any Recipes yet.</h3>
             </div>
+          ) : (
+            <div className="grid md:grid-cols-3 gap-8">
+              {savedRecipes.map((recipe) => (
+                <Recipe key={recipe._id} recipe={recipe} />
+              ))}
+            </div>
           )}
-          <div className="grid md:grid-cols-3 gap-8">
-            {savedRecipes.map((recipe) => (
-              <Recipe key={recipe._id} recipe={recipe} />
-            ))}
-          </div>
         </div>
       </section>
       <Footer />
