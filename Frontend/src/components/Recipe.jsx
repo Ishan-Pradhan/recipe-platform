@@ -22,7 +22,7 @@ const Recipe = ({ recipe }) => {
             </p>
           </div>
           <div className="flex flex-col gap-[16px] md:flex-row md:justify-between md:items-center">
-            <span className="uppercase font-[500] md:text-[10px] 2xl:text-[12px] leading-[14.4px] tracking-[-1%] ">
+            <span className="uppercase font-[500] md:text-[10px] 2xl:text-[12px] leading-[14.4px] tracking-[-1%]">
               {recipe.prepTime} - {recipe.prepLevel} PREP - {recipe.serves}{" "}
               serves
             </span>

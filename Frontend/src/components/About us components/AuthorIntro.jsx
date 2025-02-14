@@ -2,11 +2,8 @@ import React from "react";
 
 const AuthorIntro = () => {
   return (
-    <section className="container mx-auto mb-10 ">
-      <div
-        data-aos="fade-up"
-        className="mx-4  flex flex-col gap-[40px] border border-dark border-opacity-20 rounded-[24px] py-4 px-4  md:gap-[64px] md:rounded-[32px]"
-      >
+    <section data-aos="fade-up" className="container mx-auto mb-10 ">
+      <div className="mx-4  flex flex-col gap-[40px] border border-dark border-opacity-20 rounded-[24px] py-4 px-4  md:gap-[64px] md:rounded-[32px]">
         <div className="flex flex-col gap-[40px] md:flex-row md:items-center md:justify-center">
           <div className="flex flex-col gap-4">
             <div className=" md:w-[600px]  md:h-[480px]">
@@ -63,10 +60,7 @@ const AuthorIntro = () => {
           </div>
         </div>
 
-        <div
-          data-aos="fade-up"
-          className="grid grid-cols-1 md:grid-cols-4 gap-[14px]"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-[14px]">
           <div className="overflow-hidden rounded-[24px] h-80 md:h-60 w-full  ">
             <img
               src="images/aboutus/1.jpg"
