@@ -122,7 +122,7 @@ const Header = () => {
                 <form
                   className={`lg:absolute flex items-center absolute left-0  top-0 w-[200px] md:w-auto  md:-left-[240px] transition-all ease-in duration-200 ${
                     searchOpen ? "w-auto" : "w-0"
-                  } ${openMenu ? "h-full" : "h-20 w-24 md:h-0 md:w-0"}`}
+                  } ${openMenu ? "h-full" : "h-20 w-16 md:h-0 md:w-0"}`}
                   onSubmit={handleSearch}
                 >
                   <input
