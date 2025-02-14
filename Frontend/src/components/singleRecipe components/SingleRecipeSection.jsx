@@ -370,7 +370,7 @@ const SingleRecipeSection = ({ recipe }) => {
                                     onClick={() =>
                                       handleAdminDeleteComment(comment._id)
                                     }
-                                    className=" text-sm  font-medium underline text-red-500 "
+                                    className=" text-sm self-end font-medium underline text-red-500 "
                                   >
                                     Admin Delete
                                   </button>

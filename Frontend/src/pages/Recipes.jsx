@@ -106,7 +106,7 @@ const Recipes = () => {
         </div>
 
         {loading ? (
-          <div className="flex flex-col md:flex-row gap-20 md:my-20">
+          <div className="flex flex-col md:flex-row gap-20 md:my-10">
             <SkeletonLoader />
             <SkeletonLoader />
             <SkeletonLoader />
