@@ -363,18 +363,17 @@ const SingleRecipeSection = ({ recipe }) => {
                                         Delete
                                       </button>
                                     )}
-                                    {currentUser?.data?.user?.role ===
-                                      "admin" && (
-                                      <button
-                                        onClick={() =>
-                                          handleAdminDeleteComment(comment._id)
-                                        }
-                                        className=" text-sm  font-medium underline text-red-500 "
-                                      >
-                                        Admin Delete
-                                      </button>
-                                    )}
                                   </div>
+                                )}
+                                {currentUser?.data?.user?.role === "admin" && (
+                                  <button
+                                    onClick={() =>
+                                      handleAdminDeleteComment(comment._id)
+                                    }
+                                    className=" text-sm  font-medium underline text-red-500 "
+                                  >
+                                    Admin Delete
+                                  </button>
                                 )}
                               </div>
                             </>
