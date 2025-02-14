@@ -352,7 +352,7 @@ const SingleRecipeSection = ({ recipe }) => {
                                     >
                                       Edit
                                     </button>
-                                    {currentUser?.data?.user?.role !==
+                                    {currentUser?.data?.user?.role ===
                                       "admin" && (
                                       <button
                                         onClick={() =>
