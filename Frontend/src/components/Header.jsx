@@ -65,8 +65,8 @@ const Header = () => {
       <div
         className={`${
           openMenu
-            ? "relative flex justify-between items-center m-4 border-2  border-dark border-opacity-20 rounded-full px-6 py-4"
-            : " flex justify-between items-center py-4 m-4 md:2xl:mx-auto md:border-2  md:border-dark md:border-opacity-20 md:rounded-full md:px-6 md:w-full"
+            ? "relative flex justify-between items-start md:items-center m-4 border-2  border-dark border-opacity-20 rounded-full px-6 py-4"
+            : " flex justify-between items-start md:items-center py-4 m-4 md:2xl:mx-auto md:border-2  md:border-dark md:border-opacity-20 md:rounded-full md:px-6 md:w-full"
         }`}
       >
         <Link to="/" className="w-32" onClick={scrollToTop}>
@@ -115,19 +115,27 @@ const Header = () => {
           </ul>
         </div>
 
-        <div className="flex  gap-4">
+        <div
+          className={`flex ${
+            searchOpen ? "flex-col-reverse" : "flex-row"
+          } gap-4`}
+        >
           <div className=" md:relative md:flex md:gap-[16px] justify-center items-center">
             <div className="  md:flex w-full justify-center items-center">
               {searchOpen && (
                 <form
-                  className={`lg:absolute flex items-center absolute left-0  top-0 w-[200px] md:w-auto  md:-left-[240px] transition-all ease-in duration-200 ${
+                  className={`lg:absolute flex items-center absolute md:top-2 left-0  md:w-auto  md:-left-[240px] transition-all ease-in duration-200 ${
                     searchOpen ? "w-auto" : "w-0"
-                  } ${openMenu ? "h-full" : "h-20 w-16 md:h-0 md:w-0"}`}
+                  } ${
+                    openMenu
+                      ? "absolute left-6 top-[68px] w-1/2"
+                      : "absolute left-4 top-[68px] w-1/2 h-20  md:h-0 md:w-0"
+                  }`}
                   onSubmit={handleSearch}
                 >
                   <input
                     type="search"
-                    className="px-4 border border-dark border-opacity-25 rounded-full md:rounded-sm bg-light focus:none h-full md:h-auto w-full md:w-auto"
+                    className="px-4 border border-dark border-opacity-25 rounded-full md:rounded-sm bg-light focus:none h-10 md:h-auto w-full md:w-auto"
                     value={searchInput}
                     placeholder="search recipe"
                     onChange={(e) => setSearchInput(e.target.value)}
