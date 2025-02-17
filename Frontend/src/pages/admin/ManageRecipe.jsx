@@ -10,6 +10,8 @@ import { useNavigate } from "react-router-dom";
 const ManageRecipe = () => {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchInput, setSearchInput] = useState("");
+
   const navigate = useNavigate();
 
   const handleSearch = (e) => {
