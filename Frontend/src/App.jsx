@@ -22,6 +22,7 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
+import AdminSearch from "./pages/AdminSearch";
 
 function App() {
   useEffect(() => {
@@ -55,6 +56,7 @@ function App() {
             path="admin/updaterecipe/:id"
             element={<UpdateRecipeSection />}
           />
+          <Route path="admin/adminsearch" element={<AdminSearch />} />
         </Route>
 
         <Route path="/verify-email/:email" element={<VerifyEmail />} />
