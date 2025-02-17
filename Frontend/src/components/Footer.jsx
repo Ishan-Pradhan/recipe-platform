@@ -5,7 +5,7 @@ import { scrollToTop } from "../utils/scrollToTop";
 const Footer = () => {
   return (
     <footer className="container mx-auto mb-4">
-      <div className="mx-4  2xl:mx-auto bg-dark text-[#F0EBE1] px-4 py-[24px] md:px-[40px] rounded-[24px]">
+      <div className="mx-4  bg-dark text-[#F0EBE1] px-4 py-[24px] md:px-[40px] rounded-[24px]">
         <div className="flex flex-col md:flex-row justify-center items-center md:justify-between md:items-center gap-[24px] py-6 md:border-b">
           <div className="w-32">
             <img src="/logo/lightlogo.svg" className="h-full w-full" alt="" />
