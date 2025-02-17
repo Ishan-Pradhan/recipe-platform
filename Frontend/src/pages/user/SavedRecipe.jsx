@@ -47,7 +47,7 @@ const SavedRecipe = () => {
               <SkeletonLoader />
             </div>
           ) : savedRecipes.length === 0 ? (
-            <div className="h-48 flex justify-center items-center">
+            <div className="h-[70vh] flex justify-center items-center">
               <h3>You have not saved any Recipes yet.</h3>
             </div>
           ) : (
