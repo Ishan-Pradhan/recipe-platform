@@ -35,7 +35,9 @@ const registerUser = asyncHandler(async (req, res) => {
   });
 
   if (existedUser) {
-    res.status(409).send({ message: "This email is already registered" });
+    res
+      .status(409)
+      .send({ message: "This email or username is already registered" });
   }
 
   const user = await User.create({ username, email, password });
@@ -44,7 +46,20 @@ const registerUser = asyncHandler(async (req, res) => {
   const otpRecord = new OTP({ email, otp, purpose: "verification" });
   await otpRecord.save();
 
-  const message = `Your OTP code for email verification is: ${otp}. This will expire in 10 minutes.`;
+  const message = `
+  <div style="font-family: Arial, sans-serif; padding: 20px; color: #333;">
+    <h2 style="color: #007bff;">Email Verification</h2>
+    <p>Dear User,</p>
+    <p>Your OTP code for email verification is:</p>
+    <h3 style="background: #f4f4f4; padding: 10px; display: inline-block; border-radius: 5px;">
+      <strong>${otp}</strong>
+    </h3>
+    <p>This OTP will expire in <strong>10 minutes</strong>.</p>
+    <p>If you didn't request this, please ignore this email.</p>
+    <hr style="margin: 20px 0;">
+    <p style="font-size: 12px; color: #777;">This is an automated email. Please do not reply.</p>
+  </div>
+`;
   await sendEmail({
     email: user.email,
     subject: "Email Verification",
@@ -75,7 +90,6 @@ const loginUser = asyncHandler(async (req, res) => {
     return res
       .status(400)
       .send({ success: false, message: "Username or email is required" });
-    // throw new ApiError(400, "Username or email is required");
   }
 
   const user = await User.findOne({
@@ -84,7 +98,6 @@ const loginUser = asyncHandler(async (req, res) => {
 
   if (!user) {
     return res.status(404).send({ success: false, message: "User not found" });
-    // throw new ApiError(404, "User is not found");
   }
 
   const isPasswordValid = await user.isPasswordCorrect(password);
@@ -93,7 +106,6 @@ const loginUser = asyncHandler(async (req, res) => {
     return res
       .status(401)
       .send({ success: false, message: "Invalid user credentials" });
-    // throw new ApiError(401, "Invalid user credentials");
   }
 
   const { accessToken, refreshToken } = await generateAccessAndRefreshTokens(
@@ -193,7 +205,20 @@ const requestOtp = asyncHandler(async (req, res) => {
   });
   await otpRecord.save();
 
-  const message = `Your OTP code for password reset is: ${otp}. This will expire in 10 minutes.`;
+  const message = `
+  <div style="font-family: Arial, sans-serif; padding: 20px; color: #333;">
+    <h2 style="color: #d9534f;">🔑 Password Reset Request</h2>
+    <p>Dear User,</p>
+    <p>You recently requested to reset your password. Use the OTP code below to proceed:</p>
+    <h3 style="background: #f4f4f4; padding: 10px; display: inline-block; border-radius: 5px; font-size: 20px;">
+      <strong>${otp}</strong>
+    </h3>
+    <p>This OTP will expire in <strong>10 minutes</strong>. Please do not share it with anyone.</p>
+    <p>If you didn’t request a password reset, please ignore this email or contact support.</p>
+    <hr style="margin: 20px 0;">
+    <p style="font-size: 12px; color: #777;">This is an automated email. Please do not reply.</p>
+  </div>
+`;
   await sendEmail({
     email: user.email,
     subject: "Password Reset OTP",
@@ -214,26 +239,22 @@ const refreshAccessToken = async (req, res, next) => {
       res.status(400).send({ message: "Refresh token is required" });
     }
 
-    // Step 1: Find the user associated with the refresh token
     const user = await User.findOne({ refreshTokens: incomingRefreshToken });
 
     if (!user) {
       res.status(400).send({ message: "Invalid refresh token" });
 
-      // Step 2: Check if the incoming refresh token is still valid
       const isValid = user.refreshTokens.includes(incomingRefreshToken);
 
       if (!isValid) {
         res.status(400).send({ message: "Expired or Invalid refresh token" });
       }
 
-      // Step 3: Generate a new access token (keep the same refresh token)
-      const accessToken = user.generateAccessToken(); // Using the method to generate the access token
+      const accessToken = user.generateAccessToken();
 
-      // Step 5: Return the new access token with the existing refresh token
       return res.json({
-        accessToken, // New access token
-        refreshToken: incomingRefreshToken, // Keep the same refresh token
+        accessToken,
+        refreshToken: incomingRefreshToken,
       });
     }
   } catch (error) {
@@ -250,7 +271,6 @@ const changeCurrentPassword = asyncHandler(async (req, res) => {
     return res
       .status(400)
       .send({ success: false, message: "Old password is incorrect" });
-    // throw new ApiError(400, "Old password is incorrect");
   }
 
   user.password = newPassword;

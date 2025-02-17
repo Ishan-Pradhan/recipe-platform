@@ -25,7 +25,6 @@ const ManageRecipe = () => {
     const fetchRecipes = async () => {
       try {
         const res = await axios.get(`${URL}/api/v1/recipes/allrecipes`);
-        console.log(res.data);
         setRecipes(res.data);
         setLoading(false);
       } catch (error) {
