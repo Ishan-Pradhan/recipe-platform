@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import Recipe from "../Recipe";
 import axios from "axios";
 import { URL } from "../../constants/constants";
+import SkeletonLoader from "./../SkeletonLoader";
 
 const RecipesSection = () => {
   const [recipes, setRecipes] = useState([]);
   const [filteredRecipes, setFilteredRecipes] = useState([]);
   const [filter, setFilter] = useState("All");
+  const [loading, setLoading] = useState(true);
 
   const categories = [
     "All",
@@ -24,7 +26,9 @@ const RecipesSection = () => {
         const res = await axios.get(`${URL}/api/v1/recipes/allrecipes`);
         setRecipes(res.data);
         setFilteredRecipes(res.data);
+        setLoading(false);
       } catch (error) {
+        setLoading(false);
         console.error("Failed to fetch recipes", error);
       }
     };
@@ -75,16 +79,23 @@ const RecipesSection = () => {
         ))}
       </div>
 
-      {filteredRecipes.length === 0 && (
+      {loading ? (
+        <div className="flex flex-col md:flex-row gap-20 md:my-10">
+          <SkeletonLoader />
+          <SkeletonLoader />
+          <SkeletonLoader />
+        </div>
+      ) : filteredRecipes.length === 0 ? (
         <h2 className="text-center h-48 flex justify-center items-center">
           no recipes yet.
         </h2>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredRecipes.map((recipe) => (
+            <Recipe key={recipe._id} recipe={recipe} />
+          ))}
+        </div>
       )}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {filteredRecipes.map((recipe) => (
-          <Recipe key={recipe._id} recipe={recipe} />
-        ))}
-      </div>
     </section>
   );
 };
