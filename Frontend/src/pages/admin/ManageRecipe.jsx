@@ -3,11 +3,13 @@ import Header from "../../components/Header";
 import AdminRecipes from "../../components/admin/AdminRecipes";
 import axios from "axios";
 import Footer from "../../components/Footer";
+import { URL } from "../../constants/constants";
+import SkeletonLoader from "../../components/SkeletonLoader";
 import { useNavigate } from "react-router-dom";
 
 const ManageRecipe = () => {
   const [recipes, setRecipes] = useState([]);
-  const [searchInput, setSearchInput] = useState("");
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   const handleSearch = (e) => {
@@ -20,16 +22,18 @@ const ManageRecipe = () => {
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
-        const res = await axios.get("/api/v1/recipes/allrecipes");
+        const res = await axios.get(`${URL}/api/v1/recipes/allrecipes`);
         console.log(res.data);
         setRecipes(res.data);
+        setLoading(false);
       } catch (error) {
+        setLoading(false);
         console.error("Failed to fetch recipes", error);
       }
     };
 
     fetchRecipes();
-  }, []);
+  }, [recipes]);
   return (
     <>
       <Header />
@@ -57,11 +61,19 @@ const ManageRecipe = () => {
               />
             </form>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {recipes.map((recipe) => (
-              <AdminRecipes recipe={recipe} />
-            ))}
-          </div>
+          {loading ? (
+            <div className="flex flex-col md:flex-row gap-20 md:my-10">
+              <SkeletonLoader />
+              <SkeletonLoader />
+              <SkeletonLoader />
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-3 gap-8">
+              {recipes.map((recipe) => (
+                <AdminRecipes recipe={recipe} />
+              ))}
+            </div>
+          )}
         </div>
       </section>
       <Footer />
