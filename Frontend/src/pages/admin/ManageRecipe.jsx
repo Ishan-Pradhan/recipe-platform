@@ -64,7 +64,7 @@ const ManageRecipe = () => {
             </form>
           </div>
           {loading ? (
-            <div className="flex flex-col md:flex-row gap-20 md:my-10">
+            <div className="flex flex-col md:flex-row gap-20">
               <SkeletonLoader />
               <SkeletonLoader />
               <SkeletonLoader />
