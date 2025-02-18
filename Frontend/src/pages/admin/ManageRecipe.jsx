@@ -40,7 +40,7 @@ const ManageRecipe = () => {
       <Header />
       <section className="container mx-auto mb-10">
         <div className="mx-4 flex flex-col justify-center gap-[40px] mt-10">
-          <div className="flex justify-between items-center">
+          <div className="flex flex-col gap-4 md:flex-row md:justify-between md:items-center">
             <h1 className="text-center font-[800] text-[24px] uppercase">
               Manage Recipes
             </h1>
