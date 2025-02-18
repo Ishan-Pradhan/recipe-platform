@@ -332,11 +332,22 @@ const SingleRecipeSection = ({ recipe }) => {
                           ) : (
                             <>
                               {!comment && <div>No Comments yet.</div>}
-                              <div className="flex flex-col">
-                                <span className="font-bold text-dark text-opacity-90">
-                                  {comment.username} -{" "}
-                                  {new Date(comment.date).toLocaleDateString()}
-                                </span>
+                              <div className="flex flex-col gap-4">
+                                <div className="flex justify-between items-center">
+                                  <span className="font-bold text-dark text-opacity-90 flex items-center gap-2">
+                                    <span className="h-9 w-9 rounded-[50%] flex justify-center items-center uppercase font-bold text-xl bg-primaryBlue">
+                                      {comment.username.charAt(0)}
+                                    </span>
+                                    {comment.username}
+                                  </span>
+                                  <span className="text-dark text-opacity-60 text-sm">
+                                    {" "}
+                                    {new Date(comment.date).toLocaleDateString(
+                                      "en-UK",
+                                      ""
+                                    )}
+                                  </span>
+                                </div>
                                 <p className="text-dark text-opacity-80">
                                   {comment.text}
                                 </p>
@@ -348,7 +359,7 @@ const SingleRecipeSection = ({ recipe }) => {
                                         setEditingCommentId(comment._id);
                                         setEditingCommentText(comment.text);
                                       }}
-                                      className="  text-sm  font-medium underline "
+                                      className="text-sm font-medium underline "
                                     >
                                       Edit
                                     </button>
