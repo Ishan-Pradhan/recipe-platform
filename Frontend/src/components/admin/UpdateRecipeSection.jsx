@@ -456,6 +456,7 @@ const UpdateRecipeSection = () => {
                 onChange={handleEditorChange}
                 modules={modules}
                 formats={formats}
+                scrollingContainer="html"
                 className="quill-editor"
               />
             </div>
