@@ -5,6 +5,7 @@ import AdminRecipes from "./../components/admin/AdminRecipes";
 import SkeletonLoader from "../components/SkeletonLoader";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { URL } from "../constants/constants";
 
 const AdminSearch = () => {
   const location = useLocation();
@@ -16,7 +17,7 @@ const AdminSearch = () => {
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
-        const res = await axios.get("/api/v1/recipes/allrecipes");
+        const res = await axios.get(`${URL}/api/v1/recipes/allrecipes`);
         const filteredResults = res.data.filter((recipe) =>
           recipe.name.toLowerCase().includes(name.toLowerCase())
         );
