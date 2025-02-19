@@ -66,6 +66,7 @@ const formats = [
   "bullet",
   "link",
   "image",
+  "video",
   "align",
   "color",
   "background",

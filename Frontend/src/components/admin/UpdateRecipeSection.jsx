@@ -69,6 +69,7 @@ const UpdateRecipeSection = () => {
     "bullet",
     "link",
     "image",
+    "video",
     "align",
     "color",
     "background",
