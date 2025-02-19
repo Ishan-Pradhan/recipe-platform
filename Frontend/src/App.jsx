@@ -17,6 +17,7 @@ import UpdateRecipeSection from "./components/admin/UpdateRecipeSection";
 import ManageRecipe from "./pages/admin/ManageRecipe";
 import SavedRecipe from "./pages/user/SavedRecipe";
 import SearchPage from "./pages/SearchPage";
+import { Analytics } from "@vercel/analytics/react";
 
 import Aos from "aos";
 import "aos/dist/aos.css";
@@ -43,7 +44,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/search" element={<SearchPage />} />
-
+        <Analytics />
         <Route element={<PrivateRoute />}>
           <Route path="/profile" element={<Profile />} />
           <Route path="/savedrecipes" element={<SavedRecipe />} />
