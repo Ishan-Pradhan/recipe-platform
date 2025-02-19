@@ -36,6 +36,7 @@ function App() {
   }, []);
   return (
     <BrowserRouter>
+      <Analytics />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/aboutus" element={<AboutUs />} />
@@ -44,7 +45,6 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/search" element={<SearchPage />} />
-        <Analytics />
         <Route element={<PrivateRoute />}>
           <Route path="/profile" element={<Profile />} />
           <Route path="/savedrecipes" element={<SavedRecipe />} />
