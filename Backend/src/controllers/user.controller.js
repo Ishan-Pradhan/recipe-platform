@@ -83,6 +83,50 @@ const registerUser = asyncHandler(async (req, res) => {
   );
 });
 
+const requestEmailVerificationOtp = asyncHandler(async (req, res) => {
+  const { email } = req.body;
+  console.log(email);
+
+  const user = await User.findOne({ email });
+
+  if (!user) {
+    throw new ApiError(404, "User not found");
+  }
+
+  const otp = generateOtp();
+  const otpRecord = new OTP({
+    email: user.email,
+    otp,
+    purpose: "verification",
+  });
+  await otpRecord.save();
+
+  const message = `
+  <div style="font-family: Arial, sans-serif; padding: 20px; color: #333;">
+    <h2 style="color: #007bff;">Email Verification</h2>
+    <p>Dear User,</p>
+    <p>Your OTP code for email verification is:</p>
+    <h3 style="background: #f4f4f4; padding: 10px; display: inline-block; border-radius: 5px;">
+      <strong>${otp}</strong>
+    </h3>
+    <p>This OTP will expire in <strong>10 minutes</strong>.</p>
+    <p>If you didn't request this, please ignore this email.</p>
+    <hr style="margin: 20px 0;">
+    <p style="font-size: 12px; color: #777;">This is an automated email. Please do not reply.</p>
+  </div>
+`;
+  await sendEmail({
+    email: user.email,
+    subject: "Email Verification",
+    message,
+  });
+
+  res.status(200).json({
+    success: true,
+    message: "OTP sent to your email",
+  });
+});
+
 const loginUser = asyncHandler(async (req, res) => {
   const { emailorusername, password } = req.body;
 
