@@ -4,4 +4,4 @@
 
 This platform eliminates unverified user-generated content, ensuring all recipes are professionally curated. Users can search, filter, and bookmark recipes based on categories and cuisine types, making it easy to discover new dishes. With a responsive design, Cooking Delight provides a seamless experience across various devices, allowing users to access high-quality, chef-approved recipes anytime, anywhere.
 
-By digitizing and centralizing recipe management, Cooking Delight enhances user engagement and creates a trusted space for food enthusiasts to explore authentic and professionally crafted recipes.
+By digitizing and centralizing recipe management, Cooking Delight enhances user engagement and creates a trusted space for food enthusiasts to explore authentic and professionally crafted recipe.
