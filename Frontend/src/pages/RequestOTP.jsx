@@ -52,7 +52,7 @@ const RequestOtp = () => {
 
     try {
       const res = await axios.post(
-        "/api/v1/users/verify-password-otp",
+        `${URL}/api/v1/users/verify-password-otp`,
         { email, otp },
         {
           headers: {
@@ -62,7 +62,6 @@ const RequestOtp = () => {
       );
 
       const data = await res.data;
-      console.log(data);
       setLoading(false);
       toast.success(res.data.message);
       navigate(
