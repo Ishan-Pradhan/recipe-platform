@@ -9,11 +9,7 @@ const verifyEmailController = async (req, res) => {
       email,
       purpose: "verification",
     });
-    if (
-      !otpRecord ||
-      otpRecord.otp !== otp
-      // otpRecord.expireAt < new Date().toISOString()
-    ) {
+    if (!otpRecord || otpRecord.otp !== otp) {
       return res.status(400).json({ success: false, message: "Invalid OTP" });
     }
 
